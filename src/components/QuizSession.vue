@@ -11,7 +11,7 @@
 											:total-rows="session.questions.length"
 											:value="this.session.currentQuestionIndex + 1"
 											:per-page="1"
-											:limit="session.questions.length / 2"
+											:limit="10"
 											prev-text="Previous"
 											next-text="Next"
 											@change="changeQuestion"

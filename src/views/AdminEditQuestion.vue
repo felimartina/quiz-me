@@ -1,24 +1,11 @@
 <template>
-  <div class="home mt-3">
-		<b-row>
-			<b-col xl="3" >
-				<mq-layout mq="laptop+">
-					<quiz-session-history @quizSessionSelected="onQuizSessionSelected"/>
-				</mq-layout>
-			</b-col>
-			<b-col xl="6">
-				<quiz-session :session="currentSession"/>
-			</b-col>
-			<!-- <b-col xl="3"></b-col> -->
-		</b-row>
+  <div class="admin-edit-question">
+    <edit-question></edit-question>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import QuizSession from '@/components/QuizSession.vue'
-import QuizSessionHistory from '@/components/QuizSessionHistory.vue'
-import { QuestionTypeConstants, QuizSessionService } from '@/services'
+import EditQuestion from '@/components/EditQuestion.vue'
 
 export default {
   name: 'home',

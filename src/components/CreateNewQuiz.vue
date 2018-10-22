@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { QuizSessionService } from '@/services/'
+import { QuizSessionService, Api } from '@/services/'
 
 const DEFAULT_NUMBER_OF_QUESTIONS = 20
 
@@ -42,12 +42,13 @@ export default {
 		return {
 			numberOfQuestions: DEFAULT_NUMBER_OF_QUESTIONS,
 			selectedTags: [],
-			availableTags: ['iam', 'ec2', 's3'],
+			availableTags: [],
 			allTagsSelected: true
 		}
 	},
-  mounted() {
+  async mounted() {
 		this.selectedTags = this.availableTags.slice()
+		this.availableTags = await Api.getTags()
 	}, 
 	methods: {
 		handleCancel() {
@@ -70,7 +71,5 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>
