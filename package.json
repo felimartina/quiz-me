@@ -1,5 +1,5 @@
 {
-  "name": "quiz-me",
+  "name": "quiz",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -26,10 +26,13 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.1.0",
-    "@vue/cli-plugin-eslint": "^3.1.1",
-    "@vue/cli-service": "^3.1.1",
-    "@vue/eslint-config-standard": "^3.0.5",
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "@vue/eslint-config-prettier": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
     "json-server": "^0.14.0",
     "npm-run-all": "^4.1.3",
     "vue-template-compiler": "^2.5.17"

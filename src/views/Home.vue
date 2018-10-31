@@ -1,7 +1,17 @@
 <template>
   <div class="home mt-3">
+    <b-navbar toggleable="md" type="dark" variant="primary">
+
+  <b-navbar-brand href="#">Quiz Me</b-navbar-brand>
+  <div>
+<amplify-sign-out class="text-right"></amplify-sign-out>
+  </div>
+    
+
+</b-navbar>
     <b-row>
       <b-col>
+         <amplify-sign-out></amplify-sign-out>
       </b-col>
     </b-row>
     <b-row>

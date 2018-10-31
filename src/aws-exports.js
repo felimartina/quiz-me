@@ -2,13 +2,10 @@
 
 const awsmobile =  {
     "aws_project_region": "us-east-1",
-    "aws_content_delivery_bucket": "quizme-20181021204416--hostingbucket",
-    "aws_content_delivery_bucket_region": "us-east-1",
-    "aws_content_delivery_url": "https://d3vkrz0fqblf6r.cloudfront.net",
-    "aws_cognito_identity_pool_id": "us-east-1:18d1f527-2a66-49d2-bc4a-65ae2798d5b8",
+    "aws_cognito_identity_pool_id": "us-east-1:6ff51e18-3914-4e57-96a7-5e5efbdf58c2",
     "aws_cognito_region": "us-east-1",
-    "aws_user_pools_id": "us-east-1_igSVerCwK",
-    "aws_user_pools_web_client_id": "3cnv3lvqcm9j21q18rtse3qtgg"
+    "aws_user_pools_id": "us-east-1_hHFUVzyfQ",
+    "aws_user_pools_web_client_id": "3v7nknjr0bkilj31rto0m2qkgr"
 };
 
 

@@ -1,30 +1,38 @@
-import AdminEditQuestion from '@/views/AdminEditQuestion.vue'
-import Home from '@/views/Home.vue'
-import Login from '@/views/Login.vue'
-import * as AmplifyModules from 'aws-amplify'
-import { AmplifyPlugin } from 'aws-amplify-vue'
-import Vue from 'vue'
-import Router from 'vue-router'
+import Home from "@/views/Home.vue";
+import Login from "@/views/Login.vue";
+import Vue from "vue";
+import Router from "vue-router";
+import anonymousOnly from "./guards/anonymous-only";
+import authenticatedOnly from "./guards/authenticated-only";
 
-Vue.use(AmplifyPlugin, AmplifyModules)
-Vue.use(Router)
+Vue.use(Router);
 
-export default new Router({
+const router = new Router({
+  mode: "history",
+  base: process.env.BASE_URL,
   routes: [
     {
-      path: '/login',
-      name: 'login',
-      component: Login
+      path: "/",
+      name: "home",
+      component: Home,
+      beforeEnter: authenticatedOnly
     },
     {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/admin-edit-question',
-      name: 'admin-edit-question',
-      component: AdminEditQuestion
+      path: "/login",
+      name: "login",
+      component: Login,
+      beforeEnter: anonymousOnly
     }
+    // {
+    //   path: "/about",
+    //   name: "about",
+    //   // route level code-splitting
+    //   // this generates a separate chunk (about.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () =>
+    //     import(/* webpackChunkName: "about" */ "../views/About.vue")
+    // }
   ]
-})
+});
+
+export default router;
