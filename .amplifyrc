@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "quizme-20181021203957-authRole",
+            "UnauthRoleArn": "arn:aws:iam::586011406659:role/quizme-20181021203957-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::586011406659:role/quizme-20181021203957-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "quizme-20181021203957-deployment",
+            "UnauthRoleName": "quizme-20181021203957-unauthRole",
+            "StackName": "quizme-20181021203957",
+            "StackId": "arn:aws:cloudformation:us-east-1:586011406659:stack/quizme-20181021203957/4b27c010-d5c5-11e8-b65f-500c217dbefe"
+        }
+    }
+}

@@ -1,2169 +1,2169 @@
 {
-	"questions": [
-		{
-			"id": "73ed350d-b7fa-4633-afa9-2c94d497f928",
-			"question": "You've been asked to retrofit an existing application to make use of elastic beanstalk. The application is written in a language and uses frameworks not natively supported by elastic beanstalk AND uses a VERY specific set of dependency versions how can you accomplish the deployment using AWS tools and services. Pick the correct answer",
-			"options": [
-				{
-					"id": "2643ed33-3059-4211-9641-50aa53b68998",
-					"description": "Use CloudFormation to deploy a custom elastic beanstalk environment, using bootstrapping to add the specific dependencies and runtime required to support your application",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "f2c44c9e-03a6-46a7-be0d-a54670bb7bee",
-					"description": "Produce a docker container containing your application, all requirements and specific dependency versions. Upload to a private docker registry and use elastic beanstalk to deploy the docker container",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "c7b0268c-de4d-45a3-9903-c080481a3730",
-					"description": "Manually build an elastic beanstalk environment starting with the base EC2 instance and using CloudFormation add the EB build components to support the application",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "ec00f10e-382b-44f9-9341-b1ca868f99c3",
-					"description": "Use OPSWorks and the custom layer type to deploy an elastic beanstalk environment using the specific set of dependencies required. Use the layer options to deploy the custom language runtimes",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"f2c44c9e-03a6-46a7-be0d-a54670bb7bee"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"eb",
-				"elastic-beanstalk",
-				"docker",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "23f9fa59-61ad-4d2b-b3e3-c8467f9d85bd",
-			"question": "You've been tasked to produce cloud formation templates for a business application. The application has 3 development stages, dev, stage and prod which use different types and sizes of infrastructure. Additionally you need to deploy the application to three regions, each of which requires different AMI's for servers and may have alternative numbers of Availability zones. What is the minimum number of templates required to achieve this business objective.",
-			"options": [
-				{
-					"id": "2869e721-b5f6-435d-867b-576977d76fe0",
-					"description": "3 Templates - One for each region, but using a combination of functions and conditionals allowing one template to be portable across development stages",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "ef7f9cdf-67ae-4bd7-ac7b-d056c8d90af7",
-					"description": "9 Templates - One for each development stage containing the required resource types and sizes",
-					"explanation": "Total 3, dev, stage, prod), and for each of those sets, 1 per region each with unique AMI's and availability zone ID'",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "3a4dbcfa-02f4-4b7f-8d3b-cdd6725a8495",
-					"description": "3 Templates - One for each development stage, but using a combination of mappings and pseudo-parameters to allow regions portability.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "b0084188-1a59-4cb0-949c-1ffa0846f933",
-					"description": "1 Template - using conditional functions such as Fn::If to allow resource selection based on a development stage parameter and pseudo parameters and mappings allowing region portability.",
-					"explanation": "Using the advanced elements of CloudFormation its possible to achieve all of the functionality with 1 template. By specifying the development environment type, i.e dev, stage or prod, the template can select resource sizes and type by using conditional functions. Resources can be created ONLY if the environment type is PROD for example. Using a combination of mapping blocks and pseudo parameters alternative AMI's can be specified based on the region, and AZ's can be selected by using the Fn::Select function rather than being specified manually.",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"b0084188-1a59-4cb0-949c-1ffa0846f933"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudformation",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "ed37f188-11f4-42f2-8f5d-567ccd8fa8b9",
-			"question": "",
-			"options": [],
-			"answers": [],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "99a4dce5-210a-4b16-a4d5-a9f644aee2fa",
-			"question": "You've been tasked with creating a 1-click, unattended CloudFormation template which can deploy an application and associated infrastructure within an AWS Region, without asking for parameters, The Template should be able to be applied via the console or programmatically as part of an automated provisioning system. In order to fit into the organizations DEVOPS system, the template should be equally capable or being applied once, ten times, or 100+ times in multiple regions world wide. Each of your VPCs will be connected in a hub and spoke architecture with your head office data center. Management have asked that you design your CloudFormation template so that it can be applied to any region and will create infrastructure as appropriate for the above requirements. Select all appropriate answers below which will form part of your solution. The solution should minimize the amount of infrastructure required to support the auto-provisioning activitiesc. SELECT THREE",
-			"options": [
-				{
-					"id": "8110a404-c99a-4995-b379-30cb64602f56",
-					"description": "A CloudFormation template containing resources to provision for the application, containing resource names where appropriate within the template to confirm to the organization's resource-naming scheme.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "845c3623-2e03-4618-99ef-39fcca0f4fbd",
-					"description": "A custom resource backed by SQS, and a set of EC2 worker instances checking a configuration management database containing infrastructure configuration information.",
-					"explanation": "A SQS backed custom resource is not possible within CloudFormation. CFN custom resources use SNS, not SQS",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "f95ca495-5cf7-4b6d-ab9c-223eb8989070",
-					"description": "A lambda-backed custom resource together with a lambda function that consults a DynamoDB or RDS database containing configuration management information.",
-					"explanation": "Use a Lambda backed custom resource to interact with the database allocating and de-allocating subnets and other important elements of configuration",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "be775eff-327b-4497-b599-fa2d4a7de96b",
-					"description": "A CloudFormation template containing resources to provision for the application, omitting resource names allowing CloudFormation to select semi-random values. Use pseudo-parameters where appropriate.",
-					"explanation": "CloudFormation template which contains no resource names - this allows the template to be applied multiple times, avoiding resource naming conflicts. Using pseudo-parameters allows the template to be fully portable across regions.",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "e915495d-b4e2-489a-ab30-54e7e32db3ec",
-					"description": "Simple workflow service, orchestrating the creation of the resources and auto selecting an IP range for the subnets in each VPC, allowing VPN Hub and Spoke Connectivity.",
-					"explanation": "Simple workflow service offers no real assistance with this scenario.",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "d6b31aa5-3e79-4ef4-91a9-cd6c012d1a0c",
-					"description": "MySQL RDS - holding a database of used IP addresses from a worldwide IP plan.",
-					"explanation": "RDS should be avoided as it has costs even when not in use.",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "24e13d44-2a05-4716-832b-d1c46b1bcb8c",
-					"description": "DynamoDB - holding a database of used IP addresses from a worldwide IP plan.",
-					"explanation": "Using DynamoDB allows storage of configuration management information, but minimises the costs used for the automation. RDS will require a running server which increases the costs",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"f95ca495-5cf7-4b6d-ab9c-223eb8989070",
-				"be775eff-327b-4497-b599-fa2d4a7de96b",
-				"24e13d44-2a05-4716-832b-d1c46b1bcb8c"
-			],
-			"type": "MULTIPLE_SELECTION",
-			"tags": [
-				"cloudformation",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "6c0b07a5-b18f-4101-8376-d1defd8f160f",
-			"question": "You have an OPSWorks stack consisting of 4 layers for a multi tier application. Each layer contains 4 instances for a total of 16. You add another instance to Layer 1. How many instances will the configure recipe run on.",
-			"options": [
-				{
-					"id": "78c735ae-8943-4ca1-ab1d-ad7b12b659cb",
-					"description": "1 - the instance being added to the layer.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "40569f91-84cc-4a10-9a0e-81b4e7416f46",
-					"description": "17 - the instance being added to the layer, the remaining instances in that layer, and all other instances in the stack.",
-					"explanation": "If an instance enters or leaves an online state - i.e like it does when being created/added to a stack the configure lifecycle event is run on ALL instance in the stack including itself.",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "5b43df42-5eb6-4f8f-b043-f4c75bb68213",
-					"description": "16 - All instance in the stack except the instance being added.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "7d794b66-ffd9-4609-b2ae-a1e1bc223bbf",
-					"description": "5 - the instance being added to the layer AND the remaining instances in that layer.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"40569f91-84cc-4a10-9a0e-81b4e7416f46"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"opsworks",
-				"chef",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "51a7a6c6-648c-4d28-a960-5440a154c0ee",
-			"question": "OpsWorks Instance Auto Healing - does the following. SELECT TWO.",
-			"options": [
-				{
-					"id": "2f9e6cb7-7d95-468e-9417-a4c47c80bc8f",
-					"description": "If an instance is terminated outside of OPSWorks control, it is recreated using the OS image it was using at the time of termination",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "8c610244-1e79-4704-a826-41160960a492",
-					"description": "If an instance is terminated outside of OPSWorks control, it is recreated using the OS image specified within the stack configuration at the time of termination",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "75c8a1ed-bb98-4a7a-b758-7a4b3eb32d21",
-					"description": "If an application running on an instance fails, auto healing will recreate the instance and re-deploy the failed application, running a configuration life cycle event on all the layers instances",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "baa4844d-42c1-4211-99b1-e9659f5c3398",
-					"description": "If an EBS backed instance fails a status check, it is stopped and then started",
-					"explanation": "Refer to https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autohealing.html",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"2f9e6cb7-7d95-468e-9417-a4c47c80bc8f",
-				"baa4844d-42c1-4211-99b1-e9659f5c3398"
-			],
-			"type": "MULTIPLE_SELECTION",
-			"tags": [
-				"opsworks",
-				"chef",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "728d8ead-91d2-404c-ae10-ff530123e4c6",
-			"question": "Please select the two valid types of custom resource backing in Cloud Formation. SELECT TWO.",
-			"options": [
-				{
-					"id": "fd390f1c-0e27-4cf0-8055-834d89366cbb",
-					"description": "SWF - Simple workflow services backed custom resources allows integration with complex human and automated workflows",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "d6882bbb-7e2e-4cc7-a1b2-fa0e66ad6c0d",
-					"description": "SQS - Simple Queue Service - allowing a fleet of EC2 instances to service requests from a custom resource.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "d992473d-b2ff-4b73-8111-f7b87c46a759",
-					"description": "SNS - Simple Notification Services backed Custom Resources, allows integration with other AWS and external services.",
-					"explanation": "SNS can be used to run lambda in OTHER regions in response to a cloud formation event",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "a7dc22e7-6b67-4ede-be84-cc85ddb95e9d",
-					"description": "Lambda - Lambda backed custom resources allow event driven compute in response to stack creation, deletion and updates.",
-					"explanation": "Lambda backed is only supported in regions where lambda is available",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "00e8090a-8304-41f3-8eaf-e0b4ad7481bd",
-					"description": "S3 - S3 backed custom resources allow data created or requested by CloudFormation to be read/written to S3 in a resilient way",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"d992473d-b2ff-4b73-8111-f7b87c46a759",
-				"a7dc22e7-6b67-4ede-be84-cc85ddb95e9d"
-			],
-			"type": "MULTIPLE_SELECTION",
-			"tags": [
-				"cloudformation",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "8f9913e6-d1a2-47d5-a478-aa31e21d1508",
-			"question": "Which of the following are valid CloudWatch Alarm states? SELECT THREE.",
-			"options": [
-				{
-					"id": "c3172975-3352-4073-ada0-01eb5a287f93",
-					"description": "DISABLED",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "566a8366-abe7-41cd-a2e6-5c3a94698762",
-					"description": "ON",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "3408e673-4349-41f5-9978-4370385a5652",
-					"description": "OK",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "50422fbf-f1d2-4ddc-b739-e238f25573bf",
-					"description": "INSUFFICIENT_DATA",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "82e326c0-a927-4971-ac2c-7f2407ba4fd0",
-					"description": "ALARM",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "d5b57645-5a0f-49dc-a2ff-898c8711795c",
-					"description": "ACTIVE",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"3408e673-4349-41f5-9978-4370385a5652",
-				"50422fbf-f1d2-4ddc-b739-e238f25573bf",
-				"82e326c0-a927-4971-ac2c-7f2407ba4fd0"
-			],
-			"type": "MULTIPLE_SELECTION",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "633bc52e-4d13-4ed4-9e10-ca7e6d042e18",
-			"question": "",
-			"options": [],
-			"answers": [],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "81c79eac-3a4b-492e-8e4c-30fd4645505f",
-			"question": "What is a CloudWatch Namespace?",
-			"options": [
-				{
-					"id": "016554b2-e5bf-4a3b-8187-b5da05a2ea61",
-					"description": "A list of metric names",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "770c88b1-e7c0-4c7c-8fc8-402c01d45185",
-					"description": "A container of metrics",
-					"explanation": "Namespaces are containers for metrics. Metrics are isolated from one another in different namespaces so that metrics from different applications are not mistakenly aggregated into the same statistics",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "1aede45f-a385-4a41-8171-23373d96dbb1",
-					"description": "A name/value pair that helps you to uniquely identify a metric",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "44434049-42d4-471b-9f18-df0e3f9ad061",
-					"description": "A service used to store log files",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"770c88b1-e7c0-4c7c-8fc8-402c01d45185"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "95b43d68-3b97-4acf-a5a2-e5adecfa581d",
-			"question": "What is the purpose of CloudTrail?",
-			"options": [
-				{
-					"id": "a7966e09-b1a5-4d7a-840c-8f782cc04424",
-					"description": "None of the other options",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "1abe2e3f-61e9-4e49-90d0-574c89066d7b",
-					"description": "To provide compliance auditing",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "9a764fed-f192-4cf9-9fa0-80a2be299c0d",
-					"description": "To track resource changes",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "b68aed22-71be-4651-8f3b-b8d9cf018019",
-					"description": "All of the other options",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "5b541855-81f1-4408-b432-79c13f48f25f",
-					"description": "To enable security analysis",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"b68aed22-71be-4651-8f3b-b8d9cf018019"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudtrail",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "da99f76f-f75b-4d30-80d0-1bee7877c0ab",
-			"question": "What are CloudWatch Log Filters?",
-			"options": [
-				{
-					"id": "c5d65a91-32cc-4384-8eba-17218b4e9a1e",
-					"description": "Filters you can apply to CloudWatch Log Alarms so they don't notify you after hours",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "2897464f-a5e1-4515-8031-659892360023",
-					"description": "The terms and patterns to look for in log data as it is sent to CloudWatch Logs",
-					"explanation": "Metric filters define the terms and patterns to look for in log data as it is sent to CloudWatch Logs.",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "e713f506-99fd-41ac-bed1-acd3260492f1",
-					"description": "A service that converts CloudWatch metrics into log files for processing",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "cd59e42c-090e-41f2-9fa3-4e3d51a7629b",
-					"description": "All of the other options",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"2897464f-a5e1-4515-8031-659892360023"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "e7db3d6a-0669-48ab-8fd8-3d3c9b2584f0",
-			"question": "What is CloudWatch?",
-			"options": [
-				{
-					"id": "471d2166-b198-40e2-96e4-94b750332011",
-					"description": "A monitoring/alerting service",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "bd618c18-3657-4c68-a4c5-a7bc31883a85",
-					"description": "None of the other options",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "2fb9d3d7-393b-4a31-85e8-068de46f987d",
-					"description": "A graphing service",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "4fdde882-0246-494c-bf1c-f7748b4eb8a6",
-					"description": "All of the other options",
-					"explanation": "CloudWatch can gather metrics, it can monitor and send alarms based on those metrics, and it can graph your metrics over time",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "01323bfb-0d5a-41bc-a3e6-c4a2e012cefe",
-					"description": "A metric gathering service",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"4fdde882-0246-494c-bf1c-f7748b4eb8a6"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "e05649d2-4f4f-4f69-87a5-e0405ede63e9",
-			"question": "The three main purposes of CloudWatch Logs are. SELECT THREE.",
-			"options": [
-				{
-					"id": "2d966971-93d9-4098-a665-ce0b6cb7eed7",
-					"description": "Monitor AWS CloudTrail logged events",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "a43fb869-ad73-4be3-beab-d50d4cceae69",
-					"description": "Monitor Logs fom EC2 instances in realtime",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "0b5150fc-149d-4e5d-9545-d169ba05b761",
-					"description": "Automatically transfer CloudWatch alarm logs to S3",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "b18bd18e-c103-4968-ae0c-b3a691a2d0bf",
-					"description": "Archive log data",
-					"explanation": "",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"2d966971-93d9-4098-a665-ce0b6cb7eed7",
-				"a43fb869-ad73-4be3-beab-d50d4cceae69",
-				"b18bd18e-c103-4968-ae0c-b3a691a2d0bf"
-			],
-			"type": "MULTIPLE_SELECTION",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "46dc85bb-57fc-4f1f-95a8-a4125f9aa2ca",
-			"question": "How long will CloudWatch retain your metrics?",
-			"options": [
-				{
-					"id": "2be442af-6ddb-4059-b16c-dea52fd93e96",
-					"description": "1 week",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "aabd7cca-4817-4875-8a72-b9dcbe8ec637",
-					"description": "2 weeks",
-					"explanation": "CloudWatch will retain your metrics for 2 weeks. If you require them for a longer time period you will have to save them somewhere else",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "d39563ea-ddb0-465b-a69d-245fe0cbcab0",
-					"description": "1 day",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "716f47b8-3d83-4439-93b0-a78a95b4b52f",
-					"description": "2 days",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"aabd7cca-4817-4875-8a72-b9dcbe8ec637"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "6667e1de-e8bb-44e9-97b8-4893a25db670",
-			"question": "What is CloudWatch Events?",
-			"options": [
-				{
-					"id": "7ef032de-9296-41ff-8b5a-a61584973a52",
-					"description": "A real-time stream of events",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "c130dd11-37dd-4798-8163-9fc7692d1430",
-					"description": "All of the other options",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "d32c309d-9596-428d-9ab4-ac16ade25123",
-					"description": "The Central Nervous System of AWS",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "de16f34c-b4aa-4a87-a3f6-7c55ee087808",
-					"description": "A faster version of CloudTrail",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"c130dd11-37dd-4798-8163-9fc7692d1430"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "f53c277a-43b3-4808-8b08-1ac03bc162a0",
-			"question": "",
-			"options": [],
-			"answers": [],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "6e255974-01a1-4955-997c-df25177778b9",
-			"question": "What is a CloudWatch Custom Metric?",
-			"options": [
-				{
-					"id": "63522ae8-6c5b-40ce-83c4-bd8c099bd418",
-					"description": "A existing metric you can modify to suit your needs",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "5d326491-1cb3-4b8d-b302-efc50c7061c9",
-					"description": "A metric that you can publish to CloudWatch containing whatever data you require",
-					"explanation": "You can publish your own metrics to CloudWatch using CloudWatch Custom Metrics",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "021a5118-b4c6-44cc-8950-bae0af80a494",
-					"description": "A real-time stream of system metrics",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "e3114a6e-a6e7-4e50-b11b-1cf5932a69b3",
-					"description": "All of the other options",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"5d326491-1cb3-4b8d-b302-efc50c7061c9"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "67156551-2027-4521-b448-a4cceca50562",
-			"question": "",
-			"options": [],
-			"answers": [],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "3db16c9e-01bd-445e-8cee-69ca05cbf04a",
-			"question": "What is CloudWatch Logs?",
-			"options": [
-				{
-					"id": "2fc573c2-396a-4241-8dab-9551ceb9886f",
-					"description": "A service to store system, application and custom logs (You can use Amazon CloudWatch Logs to monitor, store, and access your log files from Amazon Elastic Compute Cloud",
-					"explanation": "Amazon EC2) instances, AWS CloudTrail, or other sources",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "68002114-4130-4060-ad70-1480305ec920",
-					"description": "All of the other options",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "dc43e32d-ab1b-4283-9943-0de2e6e2b23a",
-					"description": "A service that converts CloudWatch metrics into log files for processing",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "5d7dff04-084f-4588-ac68-f96c8aa784a4",
-					"description": "A history of CloudWatch alarm state changes",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"2fc573c2-396a-4241-8dab-9551ceb9886f"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "a661a6f4-9b5e-4704-9c55-8bcfb34432b0",
-			"question": "What is a CloudWatch Alarm?",
-			"options": [
-				{
-					"id": "51f0c94c-cfb6-4af4-b022-a8a0b75fb406",
-					"description": "An AWS broadcast regarding the state of CloudWatch",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "24e5cab8-f3f1-4233-bf4c-ef41a58a9706",
-					"description": "A notification to tell you CloudWatch has stopped working",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "0c700038-b93c-467e-af92-4cd42abdfe49",
-					"description": "A service that automatically creates alarms based on your metrics",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "46703ca2-5287-4896-9634-707d60b86cc0",
-					"description": "A service that initiates an action based on a CloudWatch metric state",
-					"explanation": "An alarm watches a single metric over a time period you specify, and performs one or more actions based on the value of the metric relative to a given threshold over a number of time periods.",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"46703ca2-5287-4896-9634-707d60b86cc0"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "05225c14-2b41-40c7-aea3-7f450e4090d3",
-			"question": "What is CloudTrail?",
-			"options": [
-				{
-					"id": "51cacee5-062a-4b9f-8596-300aceb9c533",
-					"description": "A service that logs all AWS API calls in your account",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "3b17a12e-a630-4b7a-b19e-82bc74da4899",
-					"description": "An interface between CloudWatch and CloudWatch Logs",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "870845f3-0d4c-433d-aa6f-2f0a7ee7cef4",
-					"description": "An interface between CloudWatch Logs and CloudWatch Log Filters",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "c5fc6f57-5158-425c-9f29-48dabe5c0431",
-					"description": "A service that records all CloudWatch Alarms to CloudWatch Logs",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"51cacee5-062a-4b9f-8596-300aceb9c533"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudtrail",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "d206aa05-e3ea-4863-ba83-b6d1a15b94a8",
-			"question": "What is a CloudWatch Dimension?",
-			"options": [
-				{
-					"id": "b8ae346f-cbe9-4bc6-b31c-ad544a412c76",
-					"description": "A name/value pair that helps you to uniquely identify/group metrics",
-					"explanation": "A dimension allows you to uniquely identify metrics, for example, EC2 metrics allow you to group your metrics by the 'AutoScalingGroupName' dimension",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "841a0141-0ef9-45b6-b3b9-0febeeac81af",
-					"description": "An axis on a metric graph",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "5d5ef889-96bc-44e0-9edf-fd4be5c9de46",
-					"description": "A list of metric names",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "07847752-733e-4f11-8592-4f521cb4735f",
-					"description": "A container of metrics",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"b8ae346f-cbe9-4bc6-b31c-ad544a412c76"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "9f0ceed2-f0b6-4da9-980d-88ce6aa89569",
-			"question": "",
-			"options": [],
-			"answers": [],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "a0d8d018-bae2-4928-93f5-14f60becc2ae",
-			"question": "CloudWatch Alarms can be sent to: SELECT TWO.",
-			"options": [
-				{
-					"id": "b1e13fa1-b1f3-49df-ba43-c662b8756ff4",
-					"description": "SNS",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "86a3cb4a-a2d0-41d2-8413-4f94441f40dd",
-					"description": "SQS",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "3d15980e-2ec8-4877-baa3-def1d53b0ade",
-					"description": "SWF",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "cb868945-8f7a-4c91-905d-06a8c38d2e61",
-					"description": "AutoScaling",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "8bbac3f9-1556-4ed4-97e2-fc29f47844c0",
-					"description": "SES",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"b1e13fa1-b1f3-49df-ba43-c662b8756ff4",
-				"cb868945-8f7a-4c91-905d-06a8c38d2e61"
-			],
-			"type": "MULTIPLE_SELECTION",
-			"tags": [
-				"cloudwatch",
-				"monitoring",
-				"acloudguru",
-				"devops-pro",
-				"professional",
-				"devops"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "35f97fb5-2d1f-4e0a-8ba6-8dc51433d601",
-			"question": "You were just hired as a DevOps Engineer for a startup. Your startup uses AWS for 100% of their infrastructure. They currently have no automation at all for deployment, and they have had many failures while trying to deploy to production. The company has told you deployment process risk mitigation is the most important thing now, and you have a lot of budget for tools and AWS resources. Their stack: 2-tier API, Data stored in DynamoDB or S3 (depending on type), Compute layer is EC2 in Auto Scaling Groups. They use Route53 for DNS pointing to an ELB. An ELB balances load across the EC2 instances. The scaling group properly varies between 4 and 12 EC2 servers. Which of the following approaches, given this company’s stack and their priorities, best meets the company’s needs?",
-			"options": [
-				{
-					"id": "2c0a3950-b7e1-4132-a2d3-2ce8f2605f11",
-					"description": "Model the stack in AWS Elastic Beanstalk as a single Application with multiple Environments. Use Elastic Beanstalk’s Rolling Deploy option to progressively roll out application code changes when promoting across environments.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "5730cf32-08da-4ba2-8287-00993c9ab496",
-					"description": "Model the stack in 3 CloudFormation templates: Data layer, compute layer, and networking layer. Write stack deployment and integration testing automation following Blue-Green methodologies.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "8595d265-2450-42d4-83d8-de0f93acd9e7",
-					"description": "Model the stack in AWS OpsWorks as a single Stack, with 1 compute layer and its associated ELB. Use Chef and App Deployments to automate Rolling Deployment.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "1f8b1205-2749-4919-b028-bc483926398e",
-					"description": "Model the stack in 1 CloudFormation template, to ensure consistency and dependency graph resolution. Write deployment and integration testing automation following Rolling Deployment methodologies.",
-					"explanation": "",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"1f8b1205-2749-4919-b028-bc483926398e"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "63b2cfe9-ed5a-4bfa-8d9b-848c11d477d9",
-			"question": "You are creating a new API for video game scores. Reads are 100 times more common than writes, and the top 1% of scores are read 100 times more frequently than the rest of the scores. What’s the best design for this system, using DynamoDB?",
-			"options": [
-				{
-					"id": "db1e9c51-14e2-42a6-aa10-a05b8963ed85",
-					"description": "DynamoDB table with 100x higher read than write throughput, with CloudFront caching.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "c8e9a661-3c15-430d-9e55-d734fbcf3adf",
-					"description": "DynamoDB table with roughly equal read and write throughput, with CloudFront caching.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "94b70030-9156-41c3-835c-dadc0ea42e19",
-					"description": "DynamoDB table with 100x higher read than write throughput, with ElastiCache caching.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "076e619f-d521-42f1-92ff-fb4ec23f6021",
-					"description": "DynamoDB table with roughly equal read and write throughput, with ElastiCache caching.",
-					"explanation": "Because the 100x read ratio is mostly driven by a small subset, with caching, only a roughly equal number of reads to CachePopularItem. Writes will miss the cache, since the supermajority will hit the top 1% scores. Knowing we need to set the values roughly equal when using caching, we select AWS ElastiCache, because CloudFront cannot directly cache DynamoDB queries, and ElastiCache is an excellent in-memory cache for database queries, rather than a distributed proxy cache for content delivery. … One solution would be to cache these reads at the application layer. Caching is a technique that is used in many high-throughput applications, offloading read activity on hot items to the cache rather than to the database. Your application can cache the most popular items in memory, or use a product such as ElastiCache to do the same. http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GuidelinesForTables.html#GuidelinesForTables.",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"076e619f-d521-42f1-92ff-fb4ec23f6021"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "fb96a5ea-d986-45ad-8004-a876029fd2b5",
-			"question": "You have been asked to de-risk deployments at your company. Specifically, the CEO is concerned about outages that occur because of accidental inconsistencies between Staging and Production, which sometimes cause unexpected behaviors in Production even when Staging tests pass. You already use Docker to get high consistency between Staging and Production for the application environment on your EC2 instances. How do you further de-risk the rest of the execution environment, since in AWS, there are many service components you may use beyond EC2 virtual machines?",
-			"options": [
-				{
-					"id": "dd2e4186-1309-4b14-bc29-548ec824fa31",
-					"description": "Develop models of your entire cloud system in CloudFormation. Use this model in Staging and Production to achieve greater parity.",
-					"explanation": "Only CloudFormation’s JSON Templates allow declarative version control of repeatably deployable models of entire AWS. https://blogs.aws.amazon.com/application-management/blog/category/Best+practices",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "d8489a9c-41b2-4965-ad16-d81644f424d6",
-					"description": "Use AWS Config to force the Staging and Production stacks to have configuration parity. Any differences will be detected for you so you are aware of risks.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "dd571cab-6a43-447f-bdf2-0b5bbd5511f3",
-					"description": "Use AMIs to ensure the whole machine, including the kernel of the virual machines, is consistent, since Docker uses Linux Container",
-					"explanation": "LXC) technology, and we need to make sure the container environment is consistent",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "f269b151-efd6-49b1-882d-312621804e2f",
-					"description": "Use AWS ECS and Docker clustering. This will make sure that the AMIs and machine sizes are the same across both environments.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"dd2e4186-1309-4b14-bc29-548ec824fa31"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "a088eb6f-9a24-4ee2-b560-acc311e9f81c",
-			"question": "What is web identity federation?",
-			"options": [
-				{
-					"id": "9d8be00e-a515-49f1-9585-badeb5821a51",
-					"description": "Use of an identity provider like Google or Facebook to become an AWS IAM User.",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "df676f03-2701-4eb0-8ece-eb1c423b6c43",
-					"description": "Use of an identity provider like Google or Facebook to exchange for temporary AWS security credentials. (… users of your app can sign in using a well-known identity provider (IdP) –such as Login with Amazon, Facebook, Google, or any other OpenID Connect",
-					"explanation": "OIDC)-compatible IdP, receive an authentication token, and then exchange that AWS account.",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "b16d6c24-3ced-494d-80a9-5a2458ca2c60",
-					"description": "Use of AWS IAM User tokens to log in as a Google or Facebook user.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "9bb0b2ce-aec0-4989-b426-3ff827440108",
-					"description": "Use of AWS STS Tokens to log in as a Google or Facebook user.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"9d8be00e-a515-49f1-9585-badeb5821a51",
-				"df676f03-2701-4eb0-8ece-eb1c423b6c43"
-			],
-			"type": "MULTIPLE_SELECTION",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "46fadc47-fabd-4b5e-9aea-4078338d7361",
-			"question": "You need to create a Route53 record automatically in CloudFormation when not running in production during all launches of a Template. How should you implement this?",
-			"options": [
-				{
-					"id": "50d25f57-e5cc-4882-bbd0-57a4addaecba",
-					"description": "Use a Parameter for environment, and add a Condition on the Route53 Resource in the template to create the record only when environment is not production.",
-					"explanation": "The best way to do this is with one template, and a Condition on the resource. Route53 does not allow null strings for",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "19e95050-8bde-4bda-abea-7c1905aecb98",
-					"description": "Create two templates, one with the Route53 record value and one with a null value for the record. Use the one without it when deploying to production.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "0240a1a5-c7ef-4933-87f1-500a7c5494f4",
-					"description": "Use a Parameter for environment, and add a Condition on the Route53",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "e0de4148-a737-4409-9743-2c4290651b5f",
-					"description": "Resource in the template to create the record with a null string when environment is production.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "eefec81d-547b-40d7-909d-ad2d71e44435",
-					"description": "Create two templates, one with the Route53 record and one without it. Use the one without it when deploying to production.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"50d25f57-e5cc-4882-bbd0-57a4addaecba"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "939b61a1-4230-43b0-9f59-4376ca890363",
-			"question": "You are designing a system which needs, at minumum, 8 m4.large instances operating to service traffic. When designing a system for high availability in the us-east-1 region, which has 6 Availability Zones, you company needs to be able to handle death of a full availability zone. How should you distribute the servers, to save as much cost as possible, assuming all of the EC2 nodes are properly linked to an ELB? Your VPC account can utilize us-east-1’s AZ’s a through f, inclusive.",
-			"options": [
-				{
-					"id": "e734f7e9-71fd-441c-948f-49edf23f3b81",
-					"description": "3 servers in each of AZ’s a through d, inclusive.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "37b786a2-4be6-4285-bdf2-fd5a1f6bdcc5",
-					"description": "8 servers in each of AZ’s a and b.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "d9790e5d-a4c1-4d55-a8cb-7a82afcce9a8",
-					"description": "2 servers in each of AZ’s a through e, inclusive.",
-					"explanation": "can. By using a though e, you are allocating 5 zones. Using 2 instances, you have 10 total instances. If a single zone fails, you have 4 zones left, with 2 instances each, for a total of 8 instances. By spreading out as much as possible, you have increased cost by only 25% and significantly de-risked an availability zone failure. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions-availability-zones",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "2a689cc4-e555-4cba-a32e-215b553a746c",
-					"description": "4 servers in each of AZ’s a through c, inclusive.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"d9790e5d-a4c1-4d55-a8cb-7a82afcce9a8"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "7c5eae51-ae4a-49fe-ace6-26179155aa7d",
-			"question": "You work for a company that automatically tags photographs using artificial neural networks (ANNs), which run on GPUs using C++. You receive millions of images at a time, but only 3 times per day on average. These images are loaded into an AWS S3 bucket you control for you in a batch, and then the customer publishes a JSON-formatted manifest into another S3 bucket you control as well. Each image takes 10 milliseconds to process using a full GPU. Your neural network software requires 5 minutes to bootstrap. Image tags are JSON objects, and you must publish them to an S3 bucket. Which of these is the best system architectures for this system?",
-			"options": [
-				{
-					"id": "6d85669c-f4d7-4f84-bbf8-5f868966af97",
-					"description": "Create an OpsWorks Stack with two Layers. The first contains lifecycle scripts for launching and bootstrapping an HTTP API on G2 instances for ANN image processing, and the second has an always-on instance which monitors the S3 manifest bucket for new files. When a new file is detected, request instances to boot on the ANN layer. When the instances are booted and the HTTP APIs are up, submit processing requests to individual instances.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "0776dc57-0d3f-4ebb-8cf1-bf0ff09f0082",
-					"description": "Make an S3 notification configuration which publishes to AWS Lambda on the manifest bucket. Make the Lambda create a CloudFormation Stack which contains the logic to construct an autoscaling worker tier of EC2 G2 instances with the ANN code on each instance. Create an SQS queue of the images in the manifest. Tear the stack down when the queue is empty.",
-					"explanation": "The Lambda fleet option is incorrect because AWS Lambda does not support GPU usage. The OpsWorks stack option both requires a constantly-polling instance, and also requires complex timing and capacity planning logic. The setting the instance count as high as needed. http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "f09e21fb-cf2c-4f63-971e-86460de89bcb",
-					"description": "Deploy your ANN code to AWS Lambda as a bundled binary for the C++ extension. Make an S3 notification configuration on the manifest, which publishes to another AWS Lambda running controller code. This controller code publishes all the images in the manifest to AWS Kinesis. Your ANN code Lambda Function uses the Kinesis as an Event Source. The system automatically scales when the stream contains image events.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "ab7f0c54-b750-483a-a943-a90072976ce5",
-					"description": "Create an Auto Scaling, Load Balanced Elastic Beanstalk worker tier Application and Environment. Deploy the ANN code to G2 instances in this tier. Set the desired capacity to 1. Make the code periodically check S3 for new manifests. When a new manifest is detected, push all of the images in the manifest into the SQS queue associated with the Elastic Beanstalk worker tier.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"0776dc57-0d3f-4ebb-8cf1-bf0ff09f0082"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "c9f651d4-e5b4-489e-a1c6-3e9f78cb0328",
-			"question": "When thinking of AWS Elastic Beanstalk’s model, which is true?",
-			"options": [
-				{
-					"id": "42a7495e-04fc-400d-a1f4-e93be9b20a7d",
-					"description": "Applications have many deployments, deployments have many environments.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "40a6b1dc-51cc-4dec-83c2-882b373153a4",
-					"description": "Environments have many applications, applications have many deployments.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "078b567d-af62-44d0-9ab9-7711efae4a49",
-					"description": "Applications have many environments, environments have many deployments.",
-					"explanation": "Applications group logical services. Environments belong to Applications, and typically represent different deployment",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "b427575d-50bf-44f1-8ce8-8623aa299112",
-					"description": "Deployments have many environments, environments have many applications.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"078b567d-af62-44d0-9ab9-7711efae4a49"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "c8aba856-ee10-4333-9f58-fc42c056b6f6",
-			"question": "You are hired as the new head of operations for a SaaS company. Your CTO has asked you to make debugging any part of your entire operation simpler and as fast as possible. She complains that she has no idea what is going on in the complex, service-oriented architecture, because the developers just log to disk, and it’s very hard to find errors in logs on so many services. How can you best meet this requirement and satisfy your CTO?",
-			"options": [
-				{
-					"id": "3ececfcb-d0aa-4708-af69-a6d91dfb7341",
-					"description": "Copy all log files into AWS S3 using a cron job on each instance. Use an S3 Notification Configuration on the PutBucket event and publish events to AWS Lambda. Use the Lambda to analyze logs as soon as they come in and flag issues.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "21fad215-341b-4aa1-acd0-cfcbd9d3b1c6",
-					"description": "Begin using CloudWatch Logs on every service. Stream all Log Groups into S3 objects. Use AWS EMR cluster jobs to perform ad-hoc MapReduce analysis and write new queries when needed.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "2f3120f1-a6dd-4cfd-a507-fa5944679a83",
-					"description": "Copy all log files into AWS S3 using a cron job on each instance. Use an S3 Notification Configuration on the PutBucket event and publish events to AWS Kinesis. Use Apache Spark on AWS EMR to perform at-scale stream processing queries on the log chunks and flag issues.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "3def477e-0030-406f-b1dd-a037e62f8c63",
-					"description": "Begin using CloudWatch Logs on every service. Stream all Log Groups into an AWS Elasticsearch Service Domain running Kibana 4 and perform log analysis on a search cluster.",
-					"explanation": "The Elasticsearch and Kibana 4 combination is called the ELK Stack, and is designed specifically for real-time, ad-hoc analysis. All other answers introduce extra delay or require pre-defined queries. Amazon application monitoring, and click stream analytics.",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"3def477e-0030-406f-b1dd-a037e62f8c63"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "523ecff5-2983-447a-b31e-a82b3b7a6197",
-			"question": "For AWS Auto Scaling, what is the first transition state an instance enters after leaving steady state when scaling in due to health check failure or decreased load?",
-			"options": [
-				{
-					"id": "56811981-c6cc-4179-97a6-c301c3cf3a7c",
-					"description": "Terminating",
-					"explanation": "When Auto Scaling responds to a scale in event, it terminates one or more instances. http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "fdd0418d-62ef-423f-b6e6-d5a11bbb1a84",
-					"description": "Detaching",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "d2311a5c-e2bf-4887-bad0-5d01e54b00ec",
-					"description": "Terminating:Wait",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "17b9fed5-5363-4335-853a-8ac50061c602",
-					"description": "EnteringStandby",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"56811981-c6cc-4179-97a6-c301c3cf3a7c"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "7c184bb0-b2a7-467c-8e19-fae45b1d041a",
-			"question": "Which of these is not an instrinsic function in AWS CloudFormation?",
-			"options": [
-				{
-					"id": "f3d7d534-e6be-43bc-9b9b-e92997b82ddf",
-					"description": "Fn::Equals",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "3fd412b3-2dc5-480e-9bde-55e8e3042973",
-					"description": "Fn::If",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "38e8fe33-c342-4885-ae6e-4ddca33173ea",
-					"description": "Fn::Not",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "19e51cfe-ea36-4a8a-9c5a-889d970ee0bc",
-					"description": "Fn::Parse",
-					"explanation": "This is the complete list of Intrinsic Functions…: Fn::Base64, Fn::And, Fn::Equals, Fn::If, Fn::Not, Fn::Or, Fn::FindInMap, Fn::GetAtt, Fn::GetAZs, Fn::Join, Fn::Select, Ref",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"19e51cfe-ea36-4a8a-9c5a-889d970ee0bc"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "18a065c8-de40-49ae-99a8-06a7f36bd080",
-			"question": "How does Amazon RDS multi Availability Zone model work?",
-			"options": [
-				{
-					"id": "0b0e3165-133c-4f18-b836-f37f79ece296",
-					"description": "A second, standby database is deployed and maintained in a different availability zone from master, using synchronous replication.",
-					"explanation": "In a Multi-AZ deployment, Amazon RDS automatically provisions and maintains a synchronous standby replica in a different Availability Zone. http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "b431314d-f5c0-4987-9030-1be256eaeca3",
-					"description": "A second, standby database is deployed and maintained in a different availability zone from master using asynchronous replication.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "16a6973a-3f8c-4285-a446-1448b25c80e1",
-					"description": "A second, standby database is deployed and maintained in a different region from master using asynchronous replication.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "82e8fc25-22e1-451e-b9e3-d7e4a25e9340",
-					"description": "A second, standby database is deployed and maintained in a different region from master using synchronous replication.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"0b0e3165-133c-4f18-b836-f37f79ece296"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "9c5b7a23-6065-4ce6-bcfc-b695d23c0e69",
-			"question": "To monitor API calls against our AWS account by different users and entities, we can use ____ to create a history of calls in bulk for later review, and use ____ for reacting to AWS API calls in real-time.",
-			"options": [
-				{
-					"id": "a1946ba3-ae31-476d-a472-57f4887574c3",
-					"description": "AWS Config; AWS Inspector",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "31d8363f-04ab-4527-b0c7-ca0c6a1605b2",
-					"description": "AWS CloudTrail; AWS Config",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "d587bd81-3264-47f5-a466-3f00fafd5a0f",
-					"description": "AWS CloudTrail; CloudWatch Events",
-					"explanation": "CloudTrail is a batch API call collection service, CloudWatch Events enables real-time monitoring of calls through the Rules object interface.",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "54d6007f-5f1e-4b25-84d2-efba7c5faaa6",
-					"description": "AWS Config; AWS Lambda",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"d587bd81-3264-47f5-a466-3f00fafd5a0f"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "e2c68fac-6c26-4ede-99ef-b280c21b0b0b",
-			"question": "Your system automatically provisions EIPs to EC2 instances in a VPC on boot. The system provisions the whole VPC and stack at once. You have two of them per VPC. On your new AWS account, your attempt to create a Development environment failed, after successfully creating Staging and Production environments in the same region. What happened?",
-			"options": [
-				{
-					"id": "0c9b21a4-ac37-426c-b34d-a442f41d6cae",
-					"description": "You didn’t choose the Development version of the AMI you are using.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "8e16af68-63c4-4965-9651-73d7f97124c5",
-					"description": "You didn’t set the Development flag to true when deploying EC2 instances.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "fa276d41-44ce-4151-94fb-c52e0493a99a",
-					"description": "You hit the soft limit of 5 EIPs per region and requested a 6th.",
-					"explanation": "There is a soft limit of 5 EIPs per Region for VPC on new accounts. The third environment could not allocate the 6th EIP.",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "a3504fb8-c693-47f1-9bd3-47c4f2f823cd",
-					"description": "You hit the soft limit of 2 VPCs per region and requested a 3rd.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"fa276d41-44ce-4151-94fb-c52e0493a99a"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "b6b1bae4-8447-4fab-9722-92ac467781aa",
-			"question": "You are designing a service that aggregates clickstream data in batch and delivers reports to subscribers via email only once per week. Data is extremely spikey, geographically distributed, high-scale, and unpredictable. How should you design this system? Use a large RedShift cluster to perform the analysis, and a fleet of Lambdas to perform record inserts into the RedShift tables. Lambda",
-			"options": [
-				{
-					"id": "af05af7d-479b-42f2-aaa7-05815bba6f45",
-					"description": "will scale rapidly enough for the traffic spikes.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "37a958a1-e4ea-4c7e-b557-f986528a191a",
-					"description": "Use a CloudFront distribution with access log delivery to S3. Clicks should be recorded as querystring GETs to the distribution. Reports are built and sent by periodically running EMR jobs over the access logs in S3. (Because you only need to batch analyze, anything using streaming is a waste of money. CloudFront is a Gigabit-Scale HTTP",
-					"explanation": "S) global request distribution service, so it can handle scale, geo-spread, spikes, and unpredictability. The Access Logs will contain the GET data and work just fine for batch analysis and email using EMR. Can I use Amazon CloudFront if I expect usage peaks higher than 10 Gbps or 15,000 RPS? Yes. Complete our request for higher limits here, and we will add more capacity to your account within two business days.",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "822df8c4-e824-412f-a756-82064e941f8c",
-					"description": "Use API Gateway invoking Lambdas which PutRecords into Kinesis, and EMR running Spark performing GetRecords on Kinesis to scale with spikes. Spark on EMR outputs the analysis to S3, which are sent out via email.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "5fe445e4-5087-48f0-9b28-d622a7325cd9",
-					"description": "Use AWS Elasticsearch service and EC2 Auto Scaling groups. The Autoscaling groups scale based on click throughput and stream into the Elasticsearch domain, which is also scalable. Use Kibana to generate reports periodically.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"37a958a1-e4ea-4c7e-b557-f986528a191a"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "a694ad80-652a-4fad-a30b-0f62bd072085",
-			"question": "You want to pass queue messages that are 1GB each. How should you achieve this?",
-			"options": [
-				{
-					"id": "0a83616f-b29c-4222-bcba-e49ecabae28e",
-					"description": "Use Kinesis as a buffer stream for message bodies. Store the checkpoint id for the placement in the Kinesis Stream in SQS.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "b59b810d-f2c9-461e-8dfd-bd2fd648f2bb",
-					"description": "Use the Amazon SQS Extended Client Library for Java and Amazon S3 as a storage mechanism for message bodies.",
-					"explanation": "You can manage Amazon SQS messages with Amazon S3. This is especially useful for storing and retrieving messages with a message size of up to 2 GB. To manage Amazon SQS messages with Amazon S3, use the Amazon SQS Client Library for Java.  http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/s3-messages.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "4598e075-142c-46c8-a5a7-987ce0503381",
-					"description": "Use SQS’s support for message partitioning and multi-part uploads on Amazon S3.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "c835096e-a79a-4b4e-aa62-1603f518db2f",
-					"description": "Use AWS EFS as a shared pool storage medium. Store filesystem pointers to the files on disk in the SQS message bodies.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"b59b810d-f2c9-461e-8dfd-bd2fd648f2bb"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "051d172f-b4e8-414b-b88f-5904401dc12f",
-			"question": "For AWS Auto Scaling, what is the first transition state an existing instance enters after leaving steady state in Standby mode?",
-			"options": [
-				{
-					"id": "aa889ccb-642d-43ce-b315-f62e4b82e5cc",
-					"description": "Detaching",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "af0df50f-ff77-4ec5-942d-e3c564b53910",
-					"description": "Terminating:Wait",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "fceeb51c-4bdd-4f60-b6ed-6c83c79d56f3",
-					"description": "Pending",
-					"explanation": "You can put any instance that is in an InService state into a Standby state. This enables you to remove the instance from service, troubleshoot or make changes to it, and then put it back into service. Instances in a Standby state continue to be managed by the Auto Scaling group. However, they are not an active part of your application until you put them back into service. http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "aaea074e-7230-4396-9f6a-1e4c2aa2ce0c",
-					"description": "EnteringStandby",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"fceeb51c-4bdd-4f60-b6ed-6c83c79d56f3"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "2ae6a664-c22f-4b02-b3b5-6fb7d191362e",
-			"question": "What is the scope of an EC2 EIP?",
-			"options": [
-				{
-					"id": "cad50ac6-abf9-454e-8810-8e37a4c83589",
-					"description": "Placement Group",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "13dd5054-614f-48b5-ae35-edae40642e92",
-					"description": "Availability Zone",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "d80bf84a-0b7e-4cf9-ae3b-4ca367509f4f",
-					"description": "Region",
-					"explanation": "An Elastic IP address is tied to a region and can be associated only with an instance in the same region. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resources.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "0a47abfe-2876-43c6-9be2-0ac26e27ae0c",
-					"description": "VPC",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"d80bf84a-0b7e-4cf9-ae3b-4ca367509f4f"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "29d6ad3e-7f0d-4488-b211-97ad395a9f93",
-			"question": "Which status represents a failure state in AWS CloudFormation?",
-			"options": [
-				{
-					"id": "3f8417cb-913a-4a9b-b96a-cae615d7d9f0",
-					"description": "UPDATE_COMPLETE_CLEANUP_IN_PROGRESS",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "c4f84560-0585-4f4f-b4e4-05bc1ba852bb",
-					"description": "DELETE_COMPLETE_WITH_ARTIFACTS",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "6ed55fb1-4887-49d6-b04c-2d39f0081be7",
-					"description": "ROLLBACK_IN_PROGRESS",
-					"explanation": "ROLLBACK_IN_PROGRESS means an UpdateStack operation failed and the stack is in the process of trying to return to the valid, pre-update state. UPDATE_COMPLETE_CLEANUP_IN_PROGRESS means an update was successful, and CloudFormation is deleting any replaced, no longer used resources. ROLLBACK_FAILED is not a CloudFormation state, but UPDATE_ROLLBACK_FAILED is. DELETE_COMPLETE_WITH_ARTIFACTS does not exist at all. http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "b0ea08bc-2d6c-4838-8b11-9612cc054d3a",
-					"description": "ROLLBACK_FAILED",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"6ed55fb1-4887-49d6-b04c-2d39f0081be7"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "4b363f57-ee37-4cc0-bfd4-08c43cc86524",
-			"question": "You need to perform ad-hoc analysis on log data, including searching quickly for specific error codes and reference numbers. Which should you evaluate first?",
-			"options": [
-				{
-					"id": "408c7504-9624-45b1-b2c5-a805eb72bc83",
-					"description": "AWS Elasticsearch Service (Amazon Elasticsearch Service",
-					"explanation": "Amazon ES) is a managed service that makes it easy to deploy, operate, and scale Elasticsearch clusters in the AWS cloud. Elasticsearch is a popular open-source search and analytics engine for use cases such as log analytics, real-time application monitoring, and click stream analytics. http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/what-is-amazon-elasticsearch-service.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "abd4e8d8-ab33-447e-8667-b9a5fa5bcb8c",
-					"description": "AWS RedShift",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "79bc618c-bd1b-4d1a-9ff2-fd0b85a8572c",
-					"description": "AWS EMR",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "043868dc-9325-41ac-babf-80ad32fa0379",
-					"description": "AWS DynamoDB",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"408c7504-9624-45b1-b2c5-a805eb72bc83"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "e8752794-58c9-4eb7-a3cb-e457ec82a0a1",
-			"question": "You are building out a layer in a software stack on AWS that needs to be able to scale out to react to increased demand as fast as possible. You are running the code on EC2 instances in an Auto Scaling Group behind an ELB. Which application code deployment method should you use?",
-			"options": [
-				{
-					"id": "1b6ce0f9-278d-4636-b53a-f345fbe95536",
-					"description": "SSH into new instances that come online, and deploy new code onto the system by pulling it from an S3 bucket, which is populated by code that you refresh from source control on new pushes.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "2dabacb4-6f75-4529-b31f-9b34dc0eaf3b",
-					"description": "Bake an AMI when deploying new versions of code, and use that AMI for the Auto Scaling Launch Configuration.",
-					"explanation": "the bootstrapping process can be slower if you have a complex application or multiple applications to install. Managing a fleet of applications with several build tools and dependencies can be a challenging task during rollouts. Furthermore, your deployment service should be designed to do faster rollouts to take advantage of Auto Scaling. https://d0.awsstatic.com/whitepapers/overview-of-deployment-options-on-aws.pdf",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "2d369de7-d9a6-4a4d-8568-4fa2f2ad8dc8",
-					"description": "Create a Dockerfile when preparing to deploy a new version to production and publish it to S3. Use UserData in the Auto Scaling",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "63ebcaa4-f884-4a81-b508-6c2c56c30354",
-					"description": "Launch configuration to pull down the Dockerfile from S3 and run it when new instances launch.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "d5296d9b-cb72-471e-a59b-8962f654ccc3",
-					"description": "Create a new Auto Scaling Launch Configuration with UserData scripts configured to pull the latest code at all times.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"2dabacb4-6f75-4529-b31f-9b34dc0eaf3b"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "152fac59-8b18-4f3d-8cba-f5094ca9975a",
-			"question": "Which EBS volume type is best for high performance NoSQL cluster deployments?",
-			"options": [
-				{
-					"id": "9d2a8c9f-2bc9-4035-8899-505950cfbb3b",
-					"description": "io1 (io1 volumes, or Provisioned IOPS",
-					"explanation": "PIOPS) SSDs, are best for: Critical business applications that require sustained IOPS performance, or more than 10,000 IOPS or 160 MiB/s of throughput per volume, like large database workloads, such as http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "21f751d5-3577-43ef-9dab-b3bb1fea5df3",
-					"description": "gp1",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "017ceb52-4887-45bf-8d6d-bad47e6f4a45",
-					"description": "standard",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "48dc1e0d-3d81-40f2-ac9f-cf63342f98b7",
-					"description": "gp2",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"9d2a8c9f-2bc9-4035-8899-505950cfbb3b"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "aefe674f-c839-4b6c-9d0d-0af8c6afde0b",
-			"question": "You run accounting software in the AWS cloud. This software needs to be online continuously during the day every day of the week, and has a very static requirement for compute resources. You also have other, unrelated batch jobs that need to run once per day at any time of your choosing. How should you minimize cost?",
-			"options": [
-				{
-					"id": "0a8b6b99-93c8-49d9-815d-5c44abae96af",
-					"description": "Purchase a Heavy Utilization Reserved Instance to run the accounting software. Turn it off after hours. Run the batch jobs with the same instance class, so the Reserved Instance credits are also applied to the batch jobs.",
-					"explanation": "",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "89786ba2-e1d7-4639-9e52-df39d17fc79f",
-					"description": "Purchase a Medium Utilization Reserved Instance to run the accounting software. Turn it off after hours. Run the batch jobs with the same instance class, so the Reserved Instance credits are also applied to the batch jobs.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "9d3949a4-9eb8-4aed-a41a-b8d76d1e9910",
-					"description": "Purchase a Light Utilization Reserved Instance to run the accounting software. Turn it off after hours. Run the batch jobs with the same instance class, so the Reserved Instance credits are also applied to the batch jobs.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "98bfb83c-9eb6-4909-b618-32e7c5950577",
-					"description": "Purchase a Full Utilization Reserved Instance to run the accounting software. Turn it off after hours. Run the batch jobs with the same instance class, so the Reserved Instance credits are also applied to the batch jobs.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"0a8b6b99-93c8-49d9-815d-5c44abae96af"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "a601d791-4d77-4e42-bc68-cdb2e084642c",
-			"question": "What is the scope of an EC2 security group?",
-			"options": [
-				{
-					"id": "efbf689f-342c-4a8a-a9d6-1f0396201258",
-					"description": "Availability Zone",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "4e410e6f-3db3-414e-84b9-1d8ba06b616d",
-					"description": "Placement Group",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "d5edaa8b-69b5-4d17-b80a-6e61347c4b4d",
-					"description": "Region",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "46477196-12cc-45d2-9e21-666629726665",
-					"description": "VPC",
-					"explanation": "A security group is tied to a region and can be assigned only to instances in the same region. You can’t enable an instance to communicate with an instance outside its region using security group rules. Traffic from an instance in another region is seen as WAN bandwidth. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resources.html",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"46477196-12cc-45d2-9e21-666629726665"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "b9fd721a-cf10-4c73-bdca-127161552053",
-			"question": "When thinking of AWS Elastic Beanstalk, the ‘Swap Environment URLs’ feature most directly aids in what?",
-			"options": [
-				{
-					"id": "5e8f6989-8e48-4a0f-9f29-e0b73a5f0031",
-					"description": "Immutable Rolling Deployments",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "18341874-5bdc-4d11-b6a3-1fe77ed3ad50",
-					"description": "Mutable Rolling Deployments",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "b24842f4-d40d-4f67-a0f8-8016e0e86791",
-					"description": "Canary Deployments",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "f8c6a423-80e3-481c-b766-1e373a0b82bf",
-					"description": "Blue-Green Deployments (Simply upload the new version of your application and let your deployment service (AWS Elastic Beanstalk, AWS CloudFormation, or AWS OpsWorks) deploy a new version",
-					"explanation": "green). To cut over to the new version, you simply replace the ELB URLs in your DNS records. Elastic Beanstalk has a Swap Environment URLs feature to facilitate a simpler cutover process. https://d0.awsstatic.com/whitepapers/overview-of-deployment-options-on-aws.pdf",
-					"isCorrectAnswer": true
-				}
-			],
-			"answers": [
-				"f8c6a423-80e3-481c-b766-1e373a0b82bf"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "8c2933c6-5a69-4aab-ba41-fd9e7e427f80",
-			"question": "You need to scale an RDS deployment. You are operating at 10% writes and 90% reads, based on your logging. How best can you scale this in a simple way?",
-			"options": [
-				{
-					"id": "a77fec58-4349-419f-a29e-fd7aae54af85",
-					"description": "Create a second master RDS instance and peer the RDS groups.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "bd4efcf2-5c34-4526-8b4c-9da7b017c8fd",
-					"description": "Cache all the database responses on the read side with CloudFront.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "7dba0e81-f940-4f76-87b2-54e41be6243f",
-					"description": "Create read replicas for RDS since the load is mostly reads.",
-					"explanation": "he high-availability feature is not a scaling solution for read-only scenarios; you cannot use a standby replica to serve read traffic. To service read-only traffic, you should use a Read Replica. For more information, see Working with http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "bf6a02a0-7599-4365-ba15-77177d608cf6",
-					"description": "Create a Multi-AZ RDS installs and route read traffic to standby.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
-			],
-			"answers": [
-				"7dba0e81-f940-4f76-87b2-54e41be6243f"
-			],
-			"type": "SINGLE_CHOICE",
-			"tags": [
-				"professional",
-				"devops",
-				"briefmenow"
-			],
-			"warnings": [],
-			"isOutdated": false,
-			"isProfessional": true
-		},
-		{
-			"id": "6da6f3f7-c104-4e84-8ac8-e3f87369cdb0",
-			"question": "You are creating an application which stores extremely sensitive financial information. All information in the system must be encrypted at rest and in transit. Which of these is a violation of this policy?",
-			"options": [
-				{
-					"id": "91075ff2-65b5-47fe-958d-3d646f693909",
-					"description": "ELB SSL termination.",
-					"explanation": "Terminating SSL terminates the security of a connection over HTTP, removing the S for “Secure” in HTTPS. the “encryption in transit” requirement in the scenario. http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-listener-config.html",
-					"isCorrectAnswer": true
-				},
-				{
-					"id": "c8b7613a-a790-4367-85d0-46f92320afb5",
-					"description": "ELB Using Proxy Protocol v1.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "8765ced9-e362-4ce9-a365-7dacfd6e0ad0",
-					"description": "CloudFront Viewer Protocol Policy set to HTTPS redirection.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				},
-				{
-					"id": "10fd14e5-2b37-47cc-ac70-6d9f341b3d8d",
-					"description": "Telling S3 to use AES256 on the server-side.",
-					"explanation": "",
-					"isCorrectAnswer": false
-				}
+  "questions": [
+    {
+      "id": "73ed350d-b7fa-4633-afa9-2c94d497f928",
+      "question": "You've been asked to retrofit an existing application to make use of elastic beanstalk. The application is written in a language and uses frameworks not natively supported by elastic beanstalk AND uses a VERY specific set of dependency versions how can you accomplish the deployment using AWS tools and services. Pick the correct answer",
+      "options": [
+        {
+          "id": "2643ed33-3059-4211-9641-50aa53b68998",
+          "description": "Use CloudFormation to deploy a custom elastic beanstalk environment, using bootstrapping to add the specific dependencies and runtime required to support your application",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "f2c44c9e-03a6-46a7-be0d-a54670bb7bee",
+          "description": "Produce a docker container containing your application, all requirements and specific dependency versions. Upload to a private docker registry and use elastic beanstalk to deploy the docker container",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "c7b0268c-de4d-45a3-9903-c080481a3730",
+          "description": "Manually build an elastic beanstalk environment starting with the base EC2 instance and using CloudFormation add the EB build components to support the application",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "ec00f10e-382b-44f9-9341-b1ca868f99c3",
+          "description": "Use OPSWorks and the custom layer type to deploy an elastic beanstalk environment using the specific set of dependencies required. Use the layer options to deploy the custom language runtimes",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "f2c44c9e-03a6-46a7-be0d-a54670bb7bee"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "eb",
+        "elastic-beanstalk",
+        "docker",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "23f9fa59-61ad-4d2b-b3e3-c8467f9d85bd",
+      "question": "You've been tasked to produce cloud formation templates for a business application. The application has 3 development stages, dev, stage and prod which use different types and sizes of infrastructure. Additionally you need to deploy the application to three regions, each of which requires different AMI's for servers and may have alternative numbers of Availability zones. What is the minimum number of templates required to achieve this business objective.",
+      "options": [
+        {
+          "id": "2869e721-b5f6-435d-867b-576977d76fe0",
+          "description": "3 Templates - One for each region, but using a combination of functions and conditionals allowing one template to be portable across development stages",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "ef7f9cdf-67ae-4bd7-ac7b-d056c8d90af7",
+          "description": "9 Templates - One for each development stage containing the required resource types and sizes",
+          "explanation": "Total 3, dev, stage, prod), and for each of those sets, 1 per region each with unique AMI's and availability zone ID'",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "3a4dbcfa-02f4-4b7f-8d3b-cdd6725a8495",
+          "description": "3 Templates - One for each development stage, but using a combination of mappings and pseudo-parameters to allow regions portability.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "b0084188-1a59-4cb0-949c-1ffa0846f933",
+          "description": "1 Template - using conditional functions such as Fn::If to allow resource selection based on a development stage parameter and pseudo parameters and mappings allowing region portability.",
+          "explanation": "Using the advanced elements of CloudFormation its possible to achieve all of the functionality with 1 template. By specifying the development environment type, i.e dev, stage or prod, the template can select resource sizes and type by using conditional functions. Resources can be created ONLY if the environment type is PROD for example. Using a combination of mapping blocks and pseudo parameters alternative AMI's can be specified based on the region, and AZ's can be selected by using the Fn::Select function rather than being specified manually.",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "b0084188-1a59-4cb0-949c-1ffa0846f933"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudformation",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "ed37f188-11f4-42f2-8f5d-567ccd8fa8b9",
+      "question": "",
+      "options": [],
+      "answers": [],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "99a4dce5-210a-4b16-a4d5-a9f644aee2fa",
+      "question": "You've been tasked with creating a 1-click, unattended CloudFormation template which can deploy an application and associated infrastructure within an AWS Region, without asking for parameters, The Template should be able to be applied via the console or programmatically as part of an automated provisioning system. In order to fit into the organizations DEVOPS system, the template should be equally capable or being applied once, ten times, or 100+ times in multiple regions world wide. Each of your VPCs will be connected in a hub and spoke architecture with your head office data center. Management have asked that you design your CloudFormation template so that it can be applied to any region and will create infrastructure as appropriate for the above requirements. Select all appropriate answers below which will form part of your solution. The solution should minimize the amount of infrastructure required to support the auto-provisioning activitiesc. SELECT THREE",
+      "options": [
+        {
+          "id": "8110a404-c99a-4995-b379-30cb64602f56",
+          "description": "A CloudFormation template containing resources to provision for the application, containing resource names where appropriate within the template to confirm to the organization's resource-naming scheme.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "845c3623-2e03-4618-99ef-39fcca0f4fbd",
+          "description": "A custom resource backed by SQS, and a set of EC2 worker instances checking a configuration management database containing infrastructure configuration information.",
+          "explanation": "A SQS backed custom resource is not possible within CloudFormation. CFN custom resources use SNS, not SQS",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "f95ca495-5cf7-4b6d-ab9c-223eb8989070",
+          "description": "A lambda-backed custom resource together with a lambda function that consults a DynamoDB or RDS database containing configuration management information.",
+          "explanation": "Use a Lambda backed custom resource to interact with the database allocating and de-allocating subnets and other important elements of configuration",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "be775eff-327b-4497-b599-fa2d4a7de96b",
+          "description": "A CloudFormation template containing resources to provision for the application, omitting resource names allowing CloudFormation to select semi-random values. Use pseudo-parameters where appropriate.",
+          "explanation": "CloudFormation template which contains no resource names - this allows the template to be applied multiple times, avoiding resource naming conflicts. Using pseudo-parameters allows the template to be fully portable across regions.",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "e915495d-b4e2-489a-ab30-54e7e32db3ec",
+          "description": "Simple workflow service, orchestrating the creation of the resources and auto selecting an IP range for the subnets in each VPC, allowing VPN Hub and Spoke Connectivity.",
+          "explanation": "Simple workflow service offers no real assistance with this scenario.",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "d6b31aa5-3e79-4ef4-91a9-cd6c012d1a0c",
+          "description": "MySQL RDS - holding a database of used IP addresses from a worldwide IP plan.",
+          "explanation": "RDS should be avoided as it has costs even when not in use.",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "24e13d44-2a05-4716-832b-d1c46b1bcb8c",
+          "description": "DynamoDB - holding a database of used IP addresses from a worldwide IP plan.",
+          "explanation": "Using DynamoDB allows storage of configuration management information, but minimises the costs used for the automation. RDS will require a running server which increases the costs",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "f95ca495-5cf7-4b6d-ab9c-223eb8989070",
+        "be775eff-327b-4497-b599-fa2d4a7de96b",
+        "24e13d44-2a05-4716-832b-d1c46b1bcb8c"
+      ],
+      "type": "MULTIPLE_SELECTION",
+      "tags": [
+        "cloudformation",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "6c0b07a5-b18f-4101-8376-d1defd8f160f",
+      "question": "You have an OPSWorks stack consisting of 4 layers for a multi tier application. Each layer contains 4 instances for a total of 16. You add another instance to Layer 1. How many instances will the configure recipe run on.",
+      "options": [
+        {
+          "id": "78c735ae-8943-4ca1-ab1d-ad7b12b659cb",
+          "description": "1 - the instance being added to the layer.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "40569f91-84cc-4a10-9a0e-81b4e7416f46",
+          "description": "17 - the instance being added to the layer, the remaining instances in that layer, and all other instances in the stack.",
+          "explanation": "If an instance enters or leaves an online state - i.e like it does when being created/added to a stack the configure lifecycle event is run on ALL instance in the stack including itself.",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "5b43df42-5eb6-4f8f-b043-f4c75bb68213",
+          "description": "16 - All instance in the stack except the instance being added.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "7d794b66-ffd9-4609-b2ae-a1e1bc223bbf",
+          "description": "5 - the instance being added to the layer AND the remaining instances in that layer.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "40569f91-84cc-4a10-9a0e-81b4e7416f46"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "opsworks",
+        "chef",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "51a7a6c6-648c-4d28-a960-5440a154c0ee",
+      "question": "OpsWorks Instance Auto Healing - does the following. SELECT TWO.",
+      "options": [
+        {
+          "id": "2f9e6cb7-7d95-468e-9417-a4c47c80bc8f",
+          "description": "If an instance is terminated outside of OPSWorks control, it is recreated using the OS image it was using at the time of termination",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "8c610244-1e79-4704-a826-41160960a492",
+          "description": "If an instance is terminated outside of OPSWorks control, it is recreated using the OS image specified within the stack configuration at the time of termination",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "75c8a1ed-bb98-4a7a-b758-7a4b3eb32d21",
+          "description": "If an application running on an instance fails, auto healing will recreate the instance and re-deploy the failed application, running a configuration life cycle event on all the layers instances",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "baa4844d-42c1-4211-99b1-e9659f5c3398",
+          "description": "If an EBS backed instance fails a status check, it is stopped and then started",
+          "explanation": "Refer to https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autohealing.html",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "2f9e6cb7-7d95-468e-9417-a4c47c80bc8f",
+        "baa4844d-42c1-4211-99b1-e9659f5c3398"
+      ],
+      "type": "MULTIPLE_SELECTION",
+      "tags": [
+        "opsworks",
+        "chef",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "728d8ead-91d2-404c-ae10-ff530123e4c6",
+      "question": "Please select the two valid types of custom resource backing in Cloud Formation. SELECT TWO.",
+      "options": [
+        {
+          "id": "fd390f1c-0e27-4cf0-8055-834d89366cbb",
+          "description": "SWF - Simple workflow services backed custom resources allows integration with complex human and automated workflows",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "d6882bbb-7e2e-4cc7-a1b2-fa0e66ad6c0d",
+          "description": "SQS - Simple Queue Service - allowing a fleet of EC2 instances to service requests from a custom resource.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "d992473d-b2ff-4b73-8111-f7b87c46a759",
+          "description": "SNS - Simple Notification Services backed Custom Resources, allows integration with other AWS and external services.",
+          "explanation": "SNS can be used to run lambda in OTHER regions in response to a cloud formation event",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "a7dc22e7-6b67-4ede-be84-cc85ddb95e9d",
+          "description": "Lambda - Lambda backed custom resources allow event driven compute in response to stack creation, deletion and updates.",
+          "explanation": "Lambda backed is only supported in regions where lambda is available",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "00e8090a-8304-41f3-8eaf-e0b4ad7481bd",
+          "description": "S3 - S3 backed custom resources allow data created or requested by CloudFormation to be read/written to S3 in a resilient way",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "d992473d-b2ff-4b73-8111-f7b87c46a759",
+        "a7dc22e7-6b67-4ede-be84-cc85ddb95e9d"
+      ],
+      "type": "MULTIPLE_SELECTION",
+      "tags": [
+        "cloudformation",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "8f9913e6-d1a2-47d5-a478-aa31e21d1508",
+      "question": "Which of the following are valid CloudWatch Alarm states? SELECT THREE.",
+      "options": [
+        {
+          "id": "c3172975-3352-4073-ada0-01eb5a287f93",
+          "description": "DISABLED",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "566a8366-abe7-41cd-a2e6-5c3a94698762",
+          "description": "ON",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "3408e673-4349-41f5-9978-4370385a5652",
+          "description": "OK",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "50422fbf-f1d2-4ddc-b739-e238f25573bf",
+          "description": "INSUFFICIENT_DATA",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "82e326c0-a927-4971-ac2c-7f2407ba4fd0",
+          "description": "ALARM",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "d5b57645-5a0f-49dc-a2ff-898c8711795c",
+          "description": "ACTIVE",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "3408e673-4349-41f5-9978-4370385a5652",
+        "50422fbf-f1d2-4ddc-b739-e238f25573bf",
+        "82e326c0-a927-4971-ac2c-7f2407ba4fd0"
+      ],
+      "type": "MULTIPLE_SELECTION",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "633bc52e-4d13-4ed4-9e10-ca7e6d042e18",
+      "question": "",
+      "options": [],
+      "answers": [],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "81c79eac-3a4b-492e-8e4c-30fd4645505f",
+      "question": "What is a CloudWatch Namespace?",
+      "options": [
+        {
+          "id": "016554b2-e5bf-4a3b-8187-b5da05a2ea61",
+          "description": "A list of metric names",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "770c88b1-e7c0-4c7c-8fc8-402c01d45185",
+          "description": "A container of metrics",
+          "explanation": "Namespaces are containers for metrics. Metrics are isolated from one another in different namespaces so that metrics from different applications are not mistakenly aggregated into the same statistics",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "1aede45f-a385-4a41-8171-23373d96dbb1",
+          "description": "A name/value pair that helps you to uniquely identify a metric",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "44434049-42d4-471b-9f18-df0e3f9ad061",
+          "description": "A service used to store log files",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "770c88b1-e7c0-4c7c-8fc8-402c01d45185"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "95b43d68-3b97-4acf-a5a2-e5adecfa581d",
+      "question": "What is the purpose of CloudTrail?",
+      "options": [
+        {
+          "id": "a7966e09-b1a5-4d7a-840c-8f782cc04424",
+          "description": "None of the other options",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "1abe2e3f-61e9-4e49-90d0-574c89066d7b",
+          "description": "To provide compliance auditing",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "9a764fed-f192-4cf9-9fa0-80a2be299c0d",
+          "description": "To track resource changes",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "b68aed22-71be-4651-8f3b-b8d9cf018019",
+          "description": "All of the other options",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "5b541855-81f1-4408-b432-79c13f48f25f",
+          "description": "To enable security analysis",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "b68aed22-71be-4651-8f3b-b8d9cf018019"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudtrail",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "da99f76f-f75b-4d30-80d0-1bee7877c0ab",
+      "question": "What are CloudWatch Log Filters?",
+      "options": [
+        {
+          "id": "c5d65a91-32cc-4384-8eba-17218b4e9a1e",
+          "description": "Filters you can apply to CloudWatch Log Alarms so they don't notify you after hours",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "2897464f-a5e1-4515-8031-659892360023",
+          "description": "The terms and patterns to look for in log data as it is sent to CloudWatch Logs",
+          "explanation": "Metric filters define the terms and patterns to look for in log data as it is sent to CloudWatch Logs.",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "e713f506-99fd-41ac-bed1-acd3260492f1",
+          "description": "A service that converts CloudWatch metrics into log files for processing",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "cd59e42c-090e-41f2-9fa3-4e3d51a7629b",
+          "description": "All of the other options",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "2897464f-a5e1-4515-8031-659892360023"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "e7db3d6a-0669-48ab-8fd8-3d3c9b2584f0",
+      "question": "What is CloudWatch?",
+      "options": [
+        {
+          "id": "471d2166-b198-40e2-96e4-94b750332011",
+          "description": "A monitoring/alerting service",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "bd618c18-3657-4c68-a4c5-a7bc31883a85",
+          "description": "None of the other options",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "2fb9d3d7-393b-4a31-85e8-068de46f987d",
+          "description": "A graphing service",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "4fdde882-0246-494c-bf1c-f7748b4eb8a6",
+          "description": "All of the other options",
+          "explanation": "CloudWatch can gather metrics, it can monitor and send alarms based on those metrics, and it can graph your metrics over time",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "01323bfb-0d5a-41bc-a3e6-c4a2e012cefe",
+          "description": "A metric gathering service",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "4fdde882-0246-494c-bf1c-f7748b4eb8a6"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "e05649d2-4f4f-4f69-87a5-e0405ede63e9",
+      "question": "The three main purposes of CloudWatch Logs are. SELECT THREE.",
+      "options": [
+        {
+          "id": "2d966971-93d9-4098-a665-ce0b6cb7eed7",
+          "description": "Monitor AWS CloudTrail logged events",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "a43fb869-ad73-4be3-beab-d50d4cceae69",
+          "description": "Monitor Logs fom EC2 instances in realtime",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "0b5150fc-149d-4e5d-9545-d169ba05b761",
+          "description": "Automatically transfer CloudWatch alarm logs to S3",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "b18bd18e-c103-4968-ae0c-b3a691a2d0bf",
+          "description": "Archive log data",
+          "explanation": "",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "2d966971-93d9-4098-a665-ce0b6cb7eed7",
+        "a43fb869-ad73-4be3-beab-d50d4cceae69",
+        "b18bd18e-c103-4968-ae0c-b3a691a2d0bf"
+      ],
+      "type": "MULTIPLE_SELECTION",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "46dc85bb-57fc-4f1f-95a8-a4125f9aa2ca",
+      "question": "How long will CloudWatch retain your metrics?",
+      "options": [
+        {
+          "id": "2be442af-6ddb-4059-b16c-dea52fd93e96",
+          "description": "1 week",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "aabd7cca-4817-4875-8a72-b9dcbe8ec637",
+          "description": "2 weeks",
+          "explanation": "CloudWatch will retain your metrics for 2 weeks. If you require them for a longer time period you will have to save them somewhere else",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "d39563ea-ddb0-465b-a69d-245fe0cbcab0",
+          "description": "1 day",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "716f47b8-3d83-4439-93b0-a78a95b4b52f",
+          "description": "2 days",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "aabd7cca-4817-4875-8a72-b9dcbe8ec637"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "6667e1de-e8bb-44e9-97b8-4893a25db670",
+      "question": "What is CloudWatch Events?",
+      "options": [
+        {
+          "id": "7ef032de-9296-41ff-8b5a-a61584973a52",
+          "description": "A real-time stream of events",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "c130dd11-37dd-4798-8163-9fc7692d1430",
+          "description": "All of the other options",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "d32c309d-9596-428d-9ab4-ac16ade25123",
+          "description": "The Central Nervous System of AWS",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "de16f34c-b4aa-4a87-a3f6-7c55ee087808",
+          "description": "A faster version of CloudTrail",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "c130dd11-37dd-4798-8163-9fc7692d1430"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "f53c277a-43b3-4808-8b08-1ac03bc162a0",
+      "question": "",
+      "options": [],
+      "answers": [],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "6e255974-01a1-4955-997c-df25177778b9",
+      "question": "What is a CloudWatch Custom Metric?",
+      "options": [
+        {
+          "id": "63522ae8-6c5b-40ce-83c4-bd8c099bd418",
+          "description": "A existing metric you can modify to suit your needs",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "5d326491-1cb3-4b8d-b302-efc50c7061c9",
+          "description": "A metric that you can publish to CloudWatch containing whatever data you require",
+          "explanation": "You can publish your own metrics to CloudWatch using CloudWatch Custom Metrics",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "021a5118-b4c6-44cc-8950-bae0af80a494",
+          "description": "A real-time stream of system metrics",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "e3114a6e-a6e7-4e50-b11b-1cf5932a69b3",
+          "description": "All of the other options",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "5d326491-1cb3-4b8d-b302-efc50c7061c9"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "67156551-2027-4521-b448-a4cceca50562",
+      "question": "",
+      "options": [],
+      "answers": [],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "3db16c9e-01bd-445e-8cee-69ca05cbf04a",
+      "question": "What is CloudWatch Logs?",
+      "options": [
+        {
+          "id": "2fc573c2-396a-4241-8dab-9551ceb9886f",
+          "description": "A service to store system, application and custom logs (You can use Amazon CloudWatch Logs to monitor, store, and access your log files from Amazon Elastic Compute Cloud",
+          "explanation": "Amazon EC2) instances, AWS CloudTrail, or other sources",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "68002114-4130-4060-ad70-1480305ec920",
+          "description": "All of the other options",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "dc43e32d-ab1b-4283-9943-0de2e6e2b23a",
+          "description": "A service that converts CloudWatch metrics into log files for processing",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "5d7dff04-084f-4588-ac68-f96c8aa784a4",
+          "description": "A history of CloudWatch alarm state changes",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "2fc573c2-396a-4241-8dab-9551ceb9886f"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "a661a6f4-9b5e-4704-9c55-8bcfb34432b0",
+      "question": "What is a CloudWatch Alarm?",
+      "options": [
+        {
+          "id": "51f0c94c-cfb6-4af4-b022-a8a0b75fb406",
+          "description": "An AWS broadcast regarding the state of CloudWatch",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "24e5cab8-f3f1-4233-bf4c-ef41a58a9706",
+          "description": "A notification to tell you CloudWatch has stopped working",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "0c700038-b93c-467e-af92-4cd42abdfe49",
+          "description": "A service that automatically creates alarms based on your metrics",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "46703ca2-5287-4896-9634-707d60b86cc0",
+          "description": "A service that initiates an action based on a CloudWatch metric state",
+          "explanation": "An alarm watches a single metric over a time period you specify, and performs one or more actions based on the value of the metric relative to a given threshold over a number of time periods.",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "46703ca2-5287-4896-9634-707d60b86cc0"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "05225c14-2b41-40c7-aea3-7f450e4090d3",
+      "question": "What is CloudTrail?",
+      "options": [
+        {
+          "id": "51cacee5-062a-4b9f-8596-300aceb9c533",
+          "description": "A service that logs all AWS API calls in your account",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "3b17a12e-a630-4b7a-b19e-82bc74da4899",
+          "description": "An interface between CloudWatch and CloudWatch Logs",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "870845f3-0d4c-433d-aa6f-2f0a7ee7cef4",
+          "description": "An interface between CloudWatch Logs and CloudWatch Log Filters",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "c5fc6f57-5158-425c-9f29-48dabe5c0431",
+          "description": "A service that records all CloudWatch Alarms to CloudWatch Logs",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "51cacee5-062a-4b9f-8596-300aceb9c533"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudtrail",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "d206aa05-e3ea-4863-ba83-b6d1a15b94a8",
+      "question": "What is a CloudWatch Dimension?",
+      "options": [
+        {
+          "id": "b8ae346f-cbe9-4bc6-b31c-ad544a412c76",
+          "description": "A name/value pair that helps you to uniquely identify/group metrics",
+          "explanation": "A dimension allows you to uniquely identify metrics, for example, EC2 metrics allow you to group your metrics by the 'AutoScalingGroupName' dimension",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "841a0141-0ef9-45b6-b3b9-0febeeac81af",
+          "description": "An axis on a metric graph",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "5d5ef889-96bc-44e0-9edf-fd4be5c9de46",
+          "description": "A list of metric names",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "07847752-733e-4f11-8592-4f521cb4735f",
+          "description": "A container of metrics",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "b8ae346f-cbe9-4bc6-b31c-ad544a412c76"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "9f0ceed2-f0b6-4da9-980d-88ce6aa89569",
+      "question": "",
+      "options": [],
+      "answers": [],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "a0d8d018-bae2-4928-93f5-14f60becc2ae",
+      "question": "CloudWatch Alarms can be sent to: SELECT TWO.",
+      "options": [
+        {
+          "id": "b1e13fa1-b1f3-49df-ba43-c662b8756ff4",
+          "description": "SNS",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "86a3cb4a-a2d0-41d2-8413-4f94441f40dd",
+          "description": "SQS",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "3d15980e-2ec8-4877-baa3-def1d53b0ade",
+          "description": "SWF",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "cb868945-8f7a-4c91-905d-06a8c38d2e61",
+          "description": "AutoScaling",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "8bbac3f9-1556-4ed4-97e2-fc29f47844c0",
+          "description": "SES",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "b1e13fa1-b1f3-49df-ba43-c662b8756ff4",
+        "cb868945-8f7a-4c91-905d-06a8c38d2e61"
+      ],
+      "type": "MULTIPLE_SELECTION",
+      "tags": [
+        "cloudwatch",
+        "monitoring",
+        "acloudguru",
+        "devops-pro",
+        "professional",
+        "devops"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "35f97fb5-2d1f-4e0a-8ba6-8dc51433d601",
+      "question": "You were just hired as a DevOps Engineer for a startup. Your startup uses AWS for 100% of their infrastructure. They currently have no automation at all for deployment, and they have had many failures while trying to deploy to production. The company has told you deployment process risk mitigation is the most important thing now, and you have a lot of budget for tools and AWS resources. Their stack: 2-tier API, Data stored in DynamoDB or S3 (depending on type), Compute layer is EC2 in Auto Scaling Groups. They use Route53 for DNS pointing to an ELB. An ELB balances load across the EC2 instances. The scaling group properly varies between 4 and 12 EC2 servers. Which of the following approaches, given this company’s stack and their priorities, best meets the company’s needs?",
+      "options": [
+        {
+          "id": "2c0a3950-b7e1-4132-a2d3-2ce8f2605f11",
+          "description": "Model the stack in AWS Elastic Beanstalk as a single Application with multiple Environments. Use Elastic Beanstalk’s Rolling Deploy option to progressively roll out application code changes when promoting across environments.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "5730cf32-08da-4ba2-8287-00993c9ab496",
+          "description": "Model the stack in 3 CloudFormation templates: Data layer, compute layer, and networking layer. Write stack deployment and integration testing automation following Blue-Green methodologies.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "8595d265-2450-42d4-83d8-de0f93acd9e7",
+          "description": "Model the stack in AWS OpsWorks as a single Stack, with 1 compute layer and its associated ELB. Use Chef and App Deployments to automate Rolling Deployment.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "1f8b1205-2749-4919-b028-bc483926398e",
+          "description": "Model the stack in 1 CloudFormation template, to ensure consistency and dependency graph resolution. Write deployment and integration testing automation following Rolling Deployment methodologies.",
+          "explanation": "",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "1f8b1205-2749-4919-b028-bc483926398e"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "63b2cfe9-ed5a-4bfa-8d9b-848c11d477d9",
+      "question": "You are creating a new API for video game scores. Reads are 100 times more common than writes, and the top 1% of scores are read 100 times more frequently than the rest of the scores. What’s the best design for this system, using DynamoDB?",
+      "options": [
+        {
+          "id": "db1e9c51-14e2-42a6-aa10-a05b8963ed85",
+          "description": "DynamoDB table with 100x higher read than write throughput, with CloudFront caching.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "c8e9a661-3c15-430d-9e55-d734fbcf3adf",
+          "description": "DynamoDB table with roughly equal read and write throughput, with CloudFront caching.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "94b70030-9156-41c3-835c-dadc0ea42e19",
+          "description": "DynamoDB table with 100x higher read than write throughput, with ElastiCache caching.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "076e619f-d521-42f1-92ff-fb4ec23f6021",
+          "description": "DynamoDB table with roughly equal read and write throughput, with ElastiCache caching.",
+          "explanation": "Because the 100x read ratio is mostly driven by a small subset, with caching, only a roughly equal number of reads to CachePopularItem. Writes will miss the cache, since the supermajority will hit the top 1% scores. Knowing we need to set the values roughly equal when using caching, we select AWS ElastiCache, because CloudFront cannot directly cache DynamoDB queries, and ElastiCache is an excellent in-memory cache for database queries, rather than a distributed proxy cache for content delivery. … One solution would be to cache these reads at the application layer. Caching is a technique that is used in many high-throughput applications, offloading read activity on hot items to the cache rather than to the database. Your application can cache the most popular items in memory, or use a product such as ElastiCache to do the same. http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GuidelinesForTables.html#GuidelinesForTables.",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "076e619f-d521-42f1-92ff-fb4ec23f6021"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "fb96a5ea-d986-45ad-8004-a876029fd2b5",
+      "question": "You have been asked to de-risk deployments at your company. Specifically, the CEO is concerned about outages that occur because of accidental inconsistencies between Staging and Production, which sometimes cause unexpected behaviors in Production even when Staging tests pass. You already use Docker to get high consistency between Staging and Production for the application environment on your EC2 instances. How do you further de-risk the rest of the execution environment, since in AWS, there are many service components you may use beyond EC2 virtual machines?",
+      "options": [
+        {
+          "id": "dd2e4186-1309-4b14-bc29-548ec824fa31",
+          "description": "Develop models of your entire cloud system in CloudFormation. Use this model in Staging and Production to achieve greater parity.",
+          "explanation": "Only CloudFormation’s JSON Templates allow declarative version control of repeatably deployable models of entire AWS. https://blogs.aws.amazon.com/application-management/blog/category/Best+practices",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "d8489a9c-41b2-4965-ad16-d81644f424d6",
+          "description": "Use AWS Config to force the Staging and Production stacks to have configuration parity. Any differences will be detected for you so you are aware of risks.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "dd571cab-6a43-447f-bdf2-0b5bbd5511f3",
+          "description": "Use AMIs to ensure the whole machine, including the kernel of the virual machines, is consistent, since Docker uses Linux Container",
+          "explanation": "LXC) technology, and we need to make sure the container environment is consistent",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "f269b151-efd6-49b1-882d-312621804e2f",
+          "description": "Use AWS ECS and Docker clustering. This will make sure that the AMIs and machine sizes are the same across both environments.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "dd2e4186-1309-4b14-bc29-548ec824fa31"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "a088eb6f-9a24-4ee2-b560-acc311e9f81c",
+      "question": "What is web identity federation?",
+      "options": [
+        {
+          "id": "9d8be00e-a515-49f1-9585-badeb5821a51",
+          "description": "Use of an identity provider like Google or Facebook to become an AWS IAM User.",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "df676f03-2701-4eb0-8ece-eb1c423b6c43",
+          "description": "Use of an identity provider like Google or Facebook to exchange for temporary AWS security credentials. (… users of your app can sign in using a well-known identity provider (IdP) –such as Login with Amazon, Facebook, Google, or any other OpenID Connect",
+          "explanation": "OIDC)-compatible IdP, receive an authentication token, and then exchange that AWS account.",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "b16d6c24-3ced-494d-80a9-5a2458ca2c60",
+          "description": "Use of AWS IAM User tokens to log in as a Google or Facebook user.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "9bb0b2ce-aec0-4989-b426-3ff827440108",
+          "description": "Use of AWS STS Tokens to log in as a Google or Facebook user.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "9d8be00e-a515-49f1-9585-badeb5821a51",
+        "df676f03-2701-4eb0-8ece-eb1c423b6c43"
+      ],
+      "type": "MULTIPLE_SELECTION",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "46fadc47-fabd-4b5e-9aea-4078338d7361",
+      "question": "You need to create a Route53 record automatically in CloudFormation when not running in production during all launches of a Template. How should you implement this?",
+      "options": [
+        {
+          "id": "50d25f57-e5cc-4882-bbd0-57a4addaecba",
+          "description": "Use a Parameter for environment, and add a Condition on the Route53 Resource in the template to create the record only when environment is not production.",
+          "explanation": "The best way to do this is with one template, and a Condition on the resource. Route53 does not allow null strings for",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "19e95050-8bde-4bda-abea-7c1905aecb98",
+          "description": "Create two templates, one with the Route53 record value and one with a null value for the record. Use the one without it when deploying to production.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "0240a1a5-c7ef-4933-87f1-500a7c5494f4",
+          "description": "Use a Parameter for environment, and add a Condition on the Route53",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "e0de4148-a737-4409-9743-2c4290651b5f",
+          "description": "Resource in the template to create the record with a null string when environment is production.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "eefec81d-547b-40d7-909d-ad2d71e44435",
+          "description": "Create two templates, one with the Route53 record and one without it. Use the one without it when deploying to production.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "50d25f57-e5cc-4882-bbd0-57a4addaecba"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "939b61a1-4230-43b0-9f59-4376ca890363",
+      "question": "You are designing a system which needs, at minumum, 8 m4.large instances operating to service traffic. When designing a system for high availability in the us-east-1 region, which has 6 Availability Zones, you company needs to be able to handle death of a full availability zone. How should you distribute the servers, to save as much cost as possible, assuming all of the EC2 nodes are properly linked to an ELB? Your VPC account can utilize us-east-1’s AZ’s a through f, inclusive.",
+      "options": [
+        {
+          "id": "e734f7e9-71fd-441c-948f-49edf23f3b81",
+          "description": "3 servers in each of AZ’s a through d, inclusive.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "37b786a2-4be6-4285-bdf2-fd5a1f6bdcc5",
+          "description": "8 servers in each of AZ’s a and b.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "d9790e5d-a4c1-4d55-a8cb-7a82afcce9a8",
+          "description": "2 servers in each of AZ’s a through e, inclusive.",
+          "explanation": "can. By using a though e, you are allocating 5 zones. Using 2 instances, you have 10 total instances. If a single zone fails, you have 4 zones left, with 2 instances each, for a total of 8 instances. By spreading out as much as possible, you have increased cost by only 25% and significantly de-risked an availability zone failure. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions-availability-zones",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "2a689cc4-e555-4cba-a32e-215b553a746c",
+          "description": "4 servers in each of AZ’s a through c, inclusive.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "d9790e5d-a4c1-4d55-a8cb-7a82afcce9a8"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "7c5eae51-ae4a-49fe-ace6-26179155aa7d",
+      "question": "You work for a company that automatically tags photographs using artificial neural networks (ANNs), which run on GPUs using C++. You receive millions of images at a time, but only 3 times per day on average. These images are loaded into an AWS S3 bucket you control for you in a batch, and then the customer publishes a JSON-formatted manifest into another S3 bucket you control as well. Each image takes 10 milliseconds to process using a full GPU. Your neural network software requires 5 minutes to bootstrap. Image tags are JSON objects, and you must publish them to an S3 bucket. Which of these is the best system architectures for this system?",
+      "options": [
+        {
+          "id": "6d85669c-f4d7-4f84-bbf8-5f868966af97",
+          "description": "Create an OpsWorks Stack with two Layers. The first contains lifecycle scripts for launching and bootstrapping an HTTP API on G2 instances for ANN image processing, and the second has an always-on instance which monitors the S3 manifest bucket for new files. When a new file is detected, request instances to boot on the ANN layer. When the instances are booted and the HTTP APIs are up, submit processing requests to individual instances.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "0776dc57-0d3f-4ebb-8cf1-bf0ff09f0082",
+          "description": "Make an S3 notification configuration which publishes to AWS Lambda on the manifest bucket. Make the Lambda create a CloudFormation Stack which contains the logic to construct an autoscaling worker tier of EC2 G2 instances with the ANN code on each instance. Create an SQS queue of the images in the manifest. Tear the stack down when the queue is empty.",
+          "explanation": "The Lambda fleet option is incorrect because AWS Lambda does not support GPU usage. The OpsWorks stack option both requires a constantly-polling instance, and also requires complex timing and capacity planning logic. The setting the instance count as high as needed. http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "f09e21fb-cf2c-4f63-971e-86460de89bcb",
+          "description": "Deploy your ANN code to AWS Lambda as a bundled binary for the C++ extension. Make an S3 notification configuration on the manifest, which publishes to another AWS Lambda running controller code. This controller code publishes all the images in the manifest to AWS Kinesis. Your ANN code Lambda Function uses the Kinesis as an Event Source. The system automatically scales when the stream contains image events.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "ab7f0c54-b750-483a-a943-a90072976ce5",
+          "description": "Create an Auto Scaling, Load Balanced Elastic Beanstalk worker tier Application and Environment. Deploy the ANN code to G2 instances in this tier. Set the desired capacity to 1. Make the code periodically check S3 for new manifests. When a new manifest is detected, push all of the images in the manifest into the SQS queue associated with the Elastic Beanstalk worker tier.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "0776dc57-0d3f-4ebb-8cf1-bf0ff09f0082"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "c9f651d4-e5b4-489e-a1c6-3e9f78cb0328",
+      "question": "When thinking of AWS Elastic Beanstalk’s model, which is true?",
+      "options": [
+        {
+          "id": "42a7495e-04fc-400d-a1f4-e93be9b20a7d",
+          "description": "Applications have many deployments, deployments have many environments.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "40a6b1dc-51cc-4dec-83c2-882b373153a4",
+          "description": "Environments have many applications, applications have many deployments.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "078b567d-af62-44d0-9ab9-7711efae4a49",
+          "description": "Applications have many environments, environments have many deployments.",
+          "explanation": "Applications group logical services. Environments belong to Applications, and typically represent different deployment",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "b427575d-50bf-44f1-8ce8-8623aa299112",
+          "description": "Deployments have many environments, environments have many applications.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "078b567d-af62-44d0-9ab9-7711efae4a49"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "c8aba856-ee10-4333-9f58-fc42c056b6f6",
+      "question": "You are hired as the new head of operations for a SaaS company. Your CTO has asked you to make debugging any part of your entire operation simpler and as fast as possible. She complains that she has no idea what is going on in the complex, service-oriented architecture, because the developers just log to disk, and it’s very hard to find errors in logs on so many services. How can you best meet this requirement and satisfy your CTO?",
+      "options": [
+        {
+          "id": "3ececfcb-d0aa-4708-af69-a6d91dfb7341",
+          "description": "Copy all log files into AWS S3 using a cron job on each instance. Use an S3 Notification Configuration on the PutBucket event and publish events to AWS Lambda. Use the Lambda to analyze logs as soon as they come in and flag issues.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "21fad215-341b-4aa1-acd0-cfcbd9d3b1c6",
+          "description": "Begin using CloudWatch Logs on every service. Stream all Log Groups into S3 objects. Use AWS EMR cluster jobs to perform ad-hoc MapReduce analysis and write new queries when needed.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "2f3120f1-a6dd-4cfd-a507-fa5944679a83",
+          "description": "Copy all log files into AWS S3 using a cron job on each instance. Use an S3 Notification Configuration on the PutBucket event and publish events to AWS Kinesis. Use Apache Spark on AWS EMR to perform at-scale stream processing queries on the log chunks and flag issues.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "3def477e-0030-406f-b1dd-a037e62f8c63",
+          "description": "Begin using CloudWatch Logs on every service. Stream all Log Groups into an AWS Elasticsearch Service Domain running Kibana 4 and perform log analysis on a search cluster.",
+          "explanation": "The Elasticsearch and Kibana 4 combination is called the ELK Stack, and is designed specifically for real-time, ad-hoc analysis. All other answers introduce extra delay or require pre-defined queries. Amazon application monitoring, and click stream analytics.",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "3def477e-0030-406f-b1dd-a037e62f8c63"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "523ecff5-2983-447a-b31e-a82b3b7a6197",
+      "question": "For AWS Auto Scaling, what is the first transition state an instance enters after leaving steady state when scaling in due to health check failure or decreased load?",
+      "options": [
+        {
+          "id": "56811981-c6cc-4179-97a6-c301c3cf3a7c",
+          "description": "Terminating",
+          "explanation": "When Auto Scaling responds to a scale in event, it terminates one or more instances. http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "fdd0418d-62ef-423f-b6e6-d5a11bbb1a84",
+          "description": "Detaching",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "d2311a5c-e2bf-4887-bad0-5d01e54b00ec",
+          "description": "Terminating:Wait",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "17b9fed5-5363-4335-853a-8ac50061c602",
+          "description": "EnteringStandby",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "56811981-c6cc-4179-97a6-c301c3cf3a7c"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "7c184bb0-b2a7-467c-8e19-fae45b1d041a",
+      "question": "Which of these is not an instrinsic function in AWS CloudFormation?",
+      "options": [
+        {
+          "id": "f3d7d534-e6be-43bc-9b9b-e92997b82ddf",
+          "description": "Fn::Equals",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "3fd412b3-2dc5-480e-9bde-55e8e3042973",
+          "description": "Fn::If",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "38e8fe33-c342-4885-ae6e-4ddca33173ea",
+          "description": "Fn::Not",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "19e51cfe-ea36-4a8a-9c5a-889d970ee0bc",
+          "description": "Fn::Parse",
+          "explanation": "This is the complete list of Intrinsic Functions…: Fn::Base64, Fn::And, Fn::Equals, Fn::If, Fn::Not, Fn::Or, Fn::FindInMap, Fn::GetAtt, Fn::GetAZs, Fn::Join, Fn::Select, Ref",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "19e51cfe-ea36-4a8a-9c5a-889d970ee0bc"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "18a065c8-de40-49ae-99a8-06a7f36bd080",
+      "question": "How does Amazon RDS multi Availability Zone model work?",
+      "options": [
+        {
+          "id": "0b0e3165-133c-4f18-b836-f37f79ece296",
+          "description": "A second, standby database is deployed and maintained in a different availability zone from master, using synchronous replication.",
+          "explanation": "In a Multi-AZ deployment, Amazon RDS automatically provisions and maintains a synchronous standby replica in a different Availability Zone. http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "b431314d-f5c0-4987-9030-1be256eaeca3",
+          "description": "A second, standby database is deployed and maintained in a different availability zone from master using asynchronous replication.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "16a6973a-3f8c-4285-a446-1448b25c80e1",
+          "description": "A second, standby database is deployed and maintained in a different region from master using asynchronous replication.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "82e8fc25-22e1-451e-b9e3-d7e4a25e9340",
+          "description": "A second, standby database is deployed and maintained in a different region from master using synchronous replication.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "0b0e3165-133c-4f18-b836-f37f79ece296"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "9c5b7a23-6065-4ce6-bcfc-b695d23c0e69",
+      "question": "To monitor API calls against our AWS account by different users and entities, we can use ____ to create a history of calls in bulk for later review, and use ____ for reacting to AWS API calls in real-time.",
+      "options": [
+        {
+          "id": "a1946ba3-ae31-476d-a472-57f4887574c3",
+          "description": "AWS Config; AWS Inspector",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "31d8363f-04ab-4527-b0c7-ca0c6a1605b2",
+          "description": "AWS CloudTrail; AWS Config",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "d587bd81-3264-47f5-a466-3f00fafd5a0f",
+          "description": "AWS CloudTrail; CloudWatch Events",
+          "explanation": "CloudTrail is a batch API call collection service, CloudWatch Events enables real-time monitoring of calls through the Rules object interface.",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "54d6007f-5f1e-4b25-84d2-efba7c5faaa6",
+          "description": "AWS Config; AWS Lambda",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "d587bd81-3264-47f5-a466-3f00fafd5a0f"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "e2c68fac-6c26-4ede-99ef-b280c21b0b0b",
+      "question": "Your system automatically provisions EIPs to EC2 instances in a VPC on boot. The system provisions the whole VPC and stack at once. You have two of them per VPC. On your new AWS account, your attempt to create a Development environment failed, after successfully creating Staging and Production environments in the same region. What happened?",
+      "options": [
+        {
+          "id": "0c9b21a4-ac37-426c-b34d-a442f41d6cae",
+          "description": "You didn’t choose the Development version of the AMI you are using.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "8e16af68-63c4-4965-9651-73d7f97124c5",
+          "description": "You didn’t set the Development flag to true when deploying EC2 instances.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "fa276d41-44ce-4151-94fb-c52e0493a99a",
+          "description": "You hit the soft limit of 5 EIPs per region and requested a 6th.",
+          "explanation": "There is a soft limit of 5 EIPs per Region for VPC on new accounts. The third environment could not allocate the 6th EIP.",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "a3504fb8-c693-47f1-9bd3-47c4f2f823cd",
+          "description": "You hit the soft limit of 2 VPCs per region and requested a 3rd.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "fa276d41-44ce-4151-94fb-c52e0493a99a"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "b6b1bae4-8447-4fab-9722-92ac467781aa",
+      "question": "You are designing a service that aggregates clickstream data in batch and delivers reports to subscribers via email only once per week. Data is extremely spikey, geographically distributed, high-scale, and unpredictable. How should you design this system? Use a large RedShift cluster to perform the analysis, and a fleet of Lambdas to perform record inserts into the RedShift tables. Lambda",
+      "options": [
+        {
+          "id": "af05af7d-479b-42f2-aaa7-05815bba6f45",
+          "description": "will scale rapidly enough for the traffic spikes.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "37a958a1-e4ea-4c7e-b557-f986528a191a",
+          "description": "Use a CloudFront distribution with access log delivery to S3. Clicks should be recorded as querystring GETs to the distribution. Reports are built and sent by periodically running EMR jobs over the access logs in S3. (Because you only need to batch analyze, anything using streaming is a waste of money. CloudFront is a Gigabit-Scale HTTP",
+          "explanation": "S) global request distribution service, so it can handle scale, geo-spread, spikes, and unpredictability. The Access Logs will contain the GET data and work just fine for batch analysis and email using EMR. Can I use Amazon CloudFront if I expect usage peaks higher than 10 Gbps or 15,000 RPS? Yes. Complete our request for higher limits here, and we will add more capacity to your account within two business days.",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "822df8c4-e824-412f-a756-82064e941f8c",
+          "description": "Use API Gateway invoking Lambdas which PutRecords into Kinesis, and EMR running Spark performing GetRecords on Kinesis to scale with spikes. Spark on EMR outputs the analysis to S3, which are sent out via email.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "5fe445e4-5087-48f0-9b28-d622a7325cd9",
+          "description": "Use AWS Elasticsearch service and EC2 Auto Scaling groups. The Autoscaling groups scale based on click throughput and stream into the Elasticsearch domain, which is also scalable. Use Kibana to generate reports periodically.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "37a958a1-e4ea-4c7e-b557-f986528a191a"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "a694ad80-652a-4fad-a30b-0f62bd072085",
+      "question": "You want to pass queue messages that are 1GB each. How should you achieve this?",
+      "options": [
+        {
+          "id": "0a83616f-b29c-4222-bcba-e49ecabae28e",
+          "description": "Use Kinesis as a buffer stream for message bodies. Store the checkpoint id for the placement in the Kinesis Stream in SQS.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "b59b810d-f2c9-461e-8dfd-bd2fd648f2bb",
+          "description": "Use the Amazon SQS Extended Client Library for Java and Amazon S3 as a storage mechanism for message bodies.",
+          "explanation": "You can manage Amazon SQS messages with Amazon S3. This is especially useful for storing and retrieving messages with a message size of up to 2 GB. To manage Amazon SQS messages with Amazon S3, use the Amazon SQS Client Library for Java.  http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/s3-messages.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "4598e075-142c-46c8-a5a7-987ce0503381",
+          "description": "Use SQS’s support for message partitioning and multi-part uploads on Amazon S3.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "c835096e-a79a-4b4e-aa62-1603f518db2f",
+          "description": "Use AWS EFS as a shared pool storage medium. Store filesystem pointers to the files on disk in the SQS message bodies.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "b59b810d-f2c9-461e-8dfd-bd2fd648f2bb"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "051d172f-b4e8-414b-b88f-5904401dc12f",
+      "question": "For AWS Auto Scaling, what is the first transition state an existing instance enters after leaving steady state in Standby mode?",
+      "options": [
+        {
+          "id": "aa889ccb-642d-43ce-b315-f62e4b82e5cc",
+          "description": "Detaching",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "af0df50f-ff77-4ec5-942d-e3c564b53910",
+          "description": "Terminating:Wait",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "fceeb51c-4bdd-4f60-b6ed-6c83c79d56f3",
+          "description": "Pending",
+          "explanation": "You can put any instance that is in an InService state into a Standby state. This enables you to remove the instance from service, troubleshoot or make changes to it, and then put it back into service. Instances in a Standby state continue to be managed by the Auto Scaling group. However, they are not an active part of your application until you put them back into service. http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/AutoScalingGroupLifecycle.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "aaea074e-7230-4396-9f6a-1e4c2aa2ce0c",
+          "description": "EnteringStandby",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "fceeb51c-4bdd-4f60-b6ed-6c83c79d56f3"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "2ae6a664-c22f-4b02-b3b5-6fb7d191362e",
+      "question": "What is the scope of an EC2 EIP?",
+      "options": [
+        {
+          "id": "cad50ac6-abf9-454e-8810-8e37a4c83589",
+          "description": "Placement Group",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "13dd5054-614f-48b5-ae35-edae40642e92",
+          "description": "Availability Zone",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "d80bf84a-0b7e-4cf9-ae3b-4ca367509f4f",
+          "description": "Region",
+          "explanation": "An Elastic IP address is tied to a region and can be associated only with an instance in the same region. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resources.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "0a47abfe-2876-43c6-9be2-0ac26e27ae0c",
+          "description": "VPC",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "d80bf84a-0b7e-4cf9-ae3b-4ca367509f4f"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "29d6ad3e-7f0d-4488-b211-97ad395a9f93",
+      "question": "Which status represents a failure state in AWS CloudFormation?",
+      "options": [
+        {
+          "id": "3f8417cb-913a-4a9b-b96a-cae615d7d9f0",
+          "description": "UPDATE_COMPLETE_CLEANUP_IN_PROGRESS",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "c4f84560-0585-4f4f-b4e4-05bc1ba852bb",
+          "description": "DELETE_COMPLETE_WITH_ARTIFACTS",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "6ed55fb1-4887-49d6-b04c-2d39f0081be7",
+          "description": "ROLLBACK_IN_PROGRESS",
+          "explanation": "ROLLBACK_IN_PROGRESS means an UpdateStack operation failed and the stack is in the process of trying to return to the valid, pre-update state. UPDATE_COMPLETE_CLEANUP_IN_PROGRESS means an update was successful, and CloudFormation is deleting any replaced, no longer used resources. ROLLBACK_FAILED is not a CloudFormation state, but UPDATE_ROLLBACK_FAILED is. DELETE_COMPLETE_WITH_ARTIFACTS does not exist at all. http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "b0ea08bc-2d6c-4838-8b11-9612cc054d3a",
+          "description": "ROLLBACK_FAILED",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "6ed55fb1-4887-49d6-b04c-2d39f0081be7"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "4b363f57-ee37-4cc0-bfd4-08c43cc86524",
+      "question": "You need to perform ad-hoc analysis on log data, including searching quickly for specific error codes and reference numbers. Which should you evaluate first?",
+      "options": [
+        {
+          "id": "408c7504-9624-45b1-b2c5-a805eb72bc83",
+          "description": "AWS Elasticsearch Service (Amazon Elasticsearch Service",
+          "explanation": "Amazon ES) is a managed service that makes it easy to deploy, operate, and scale Elasticsearch clusters in the AWS cloud. Elasticsearch is a popular open-source search and analytics engine for use cases such as log analytics, real-time application monitoring, and click stream analytics. http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/what-is-amazon-elasticsearch-service.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "abd4e8d8-ab33-447e-8667-b9a5fa5bcb8c",
+          "description": "AWS RedShift",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "79bc618c-bd1b-4d1a-9ff2-fd0b85a8572c",
+          "description": "AWS EMR",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "043868dc-9325-41ac-babf-80ad32fa0379",
+          "description": "AWS DynamoDB",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "408c7504-9624-45b1-b2c5-a805eb72bc83"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "e8752794-58c9-4eb7-a3cb-e457ec82a0a1",
+      "question": "You are building out a layer in a software stack on AWS that needs to be able to scale out to react to increased demand as fast as possible. You are running the code on EC2 instances in an Auto Scaling Group behind an ELB. Which application code deployment method should you use?",
+      "options": [
+        {
+          "id": "1b6ce0f9-278d-4636-b53a-f345fbe95536",
+          "description": "SSH into new instances that come online, and deploy new code onto the system by pulling it from an S3 bucket, which is populated by code that you refresh from source control on new pushes.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "2dabacb4-6f75-4529-b31f-9b34dc0eaf3b",
+          "description": "Bake an AMI when deploying new versions of code, and use that AMI for the Auto Scaling Launch Configuration.",
+          "explanation": "the bootstrapping process can be slower if you have a complex application or multiple applications to install. Managing a fleet of applications with several build tools and dependencies can be a challenging task during rollouts. Furthermore, your deployment service should be designed to do faster rollouts to take advantage of Auto Scaling. https://d0.awsstatic.com/whitepapers/overview-of-deployment-options-on-aws.pdf",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "2d369de7-d9a6-4a4d-8568-4fa2f2ad8dc8",
+          "description": "Create a Dockerfile when preparing to deploy a new version to production and publish it to S3. Use UserData in the Auto Scaling",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "63ebcaa4-f884-4a81-b508-6c2c56c30354",
+          "description": "Launch configuration to pull down the Dockerfile from S3 and run it when new instances launch.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "d5296d9b-cb72-471e-a59b-8962f654ccc3",
+          "description": "Create a new Auto Scaling Launch Configuration with UserData scripts configured to pull the latest code at all times.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "2dabacb4-6f75-4529-b31f-9b34dc0eaf3b"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "152fac59-8b18-4f3d-8cba-f5094ca9975a",
+      "question": "Which EBS volume type is best for high performance NoSQL cluster deployments?",
+      "options": [
+        {
+          "id": "9d2a8c9f-2bc9-4035-8899-505950cfbb3b",
+          "description": "io1 (io1 volumes, or Provisioned IOPS",
+          "explanation": "PIOPS) SSDs, are best for: Critical business applications that require sustained IOPS performance, or more than 10,000 IOPS or 160 MiB/s of throughput per volume, like large database workloads, such as http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "21f751d5-3577-43ef-9dab-b3bb1fea5df3",
+          "description": "gp1",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "017ceb52-4887-45bf-8d6d-bad47e6f4a45",
+          "description": "standard",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "48dc1e0d-3d81-40f2-ac9f-cf63342f98b7",
+          "description": "gp2",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "9d2a8c9f-2bc9-4035-8899-505950cfbb3b"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "aefe674f-c839-4b6c-9d0d-0af8c6afde0b",
+      "question": "You run accounting software in the AWS cloud. This software needs to be online continuously during the day every day of the week, and has a very static requirement for compute resources. You also have other, unrelated batch jobs that need to run once per day at any time of your choosing. How should you minimize cost?",
+      "options": [
+        {
+          "id": "0a8b6b99-93c8-49d9-815d-5c44abae96af",
+          "description": "Purchase a Heavy Utilization Reserved Instance to run the accounting software. Turn it off after hours. Run the batch jobs with the same instance class, so the Reserved Instance credits are also applied to the batch jobs.",
+          "explanation": "",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "89786ba2-e1d7-4639-9e52-df39d17fc79f",
+          "description": "Purchase a Medium Utilization Reserved Instance to run the accounting software. Turn it off after hours. Run the batch jobs with the same instance class, so the Reserved Instance credits are also applied to the batch jobs.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "9d3949a4-9eb8-4aed-a41a-b8d76d1e9910",
+          "description": "Purchase a Light Utilization Reserved Instance to run the accounting software. Turn it off after hours. Run the batch jobs with the same instance class, so the Reserved Instance credits are also applied to the batch jobs.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "98bfb83c-9eb6-4909-b618-32e7c5950577",
+          "description": "Purchase a Full Utilization Reserved Instance to run the accounting software. Turn it off after hours. Run the batch jobs with the same instance class, so the Reserved Instance credits are also applied to the batch jobs.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "0a8b6b99-93c8-49d9-815d-5c44abae96af"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "a601d791-4d77-4e42-bc68-cdb2e084642c",
+      "question": "What is the scope of an EC2 security group?",
+      "options": [
+        {
+          "id": "efbf689f-342c-4a8a-a9d6-1f0396201258",
+          "description": "Availability Zone",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "4e410e6f-3db3-414e-84b9-1d8ba06b616d",
+          "description": "Placement Group",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "d5edaa8b-69b5-4d17-b80a-6e61347c4b4d",
+          "description": "Region",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "46477196-12cc-45d2-9e21-666629726665",
+          "description": "VPC",
+          "explanation": "A security group is tied to a region and can be assigned only to instances in the same region. You can’t enable an instance to communicate with an instance outside its region using security group rules. Traffic from an instance in another region is seen as WAN bandwidth. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resources.html",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "46477196-12cc-45d2-9e21-666629726665"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "b9fd721a-cf10-4c73-bdca-127161552053",
+      "question": "When thinking of AWS Elastic Beanstalk, the ‘Swap Environment URLs’ feature most directly aids in what?",
+      "options": [
+        {
+          "id": "5e8f6989-8e48-4a0f-9f29-e0b73a5f0031",
+          "description": "Immutable Rolling Deployments",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "18341874-5bdc-4d11-b6a3-1fe77ed3ad50",
+          "description": "Mutable Rolling Deployments",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "b24842f4-d40d-4f67-a0f8-8016e0e86791",
+          "description": "Canary Deployments",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "f8c6a423-80e3-481c-b766-1e373a0b82bf",
+          "description": "Blue-Green Deployments (Simply upload the new version of your application and let your deployment service (AWS Elastic Beanstalk, AWS CloudFormation, or AWS OpsWorks) deploy a new version",
+          "explanation": "green). To cut over to the new version, you simply replace the ELB URLs in your DNS records. Elastic Beanstalk has a Swap Environment URLs feature to facilitate a simpler cutover process. https://d0.awsstatic.com/whitepapers/overview-of-deployment-options-on-aws.pdf",
+          "isCorrectAnswer": true
+        }
+      ],
+      "answers": [
+        "f8c6a423-80e3-481c-b766-1e373a0b82bf"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "8c2933c6-5a69-4aab-ba41-fd9e7e427f80",
+      "question": "You need to scale an RDS deployment. You are operating at 10% writes and 90% reads, based on your logging. How best can you scale this in a simple way?",
+      "options": [
+        {
+          "id": "a77fec58-4349-419f-a29e-fd7aae54af85",
+          "description": "Create a second master RDS instance and peer the RDS groups.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "bd4efcf2-5c34-4526-8b4c-9da7b017c8fd",
+          "description": "Cache all the database responses on the read side with CloudFront.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "7dba0e81-f940-4f76-87b2-54e41be6243f",
+          "description": "Create read replicas for RDS since the load is mostly reads.",
+          "explanation": "he high-availability feature is not a scaling solution for read-only scenarios; you cannot use a standby replica to serve read traffic. To service read-only traffic, you should use a Read Replica. For more information, see Working with http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "bf6a02a0-7599-4365-ba15-77177d608cf6",
+          "description": "Create a Multi-AZ RDS installs and route read traffic to standby.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        }
+      ],
+      "answers": [
+        "7dba0e81-f940-4f76-87b2-54e41be6243f"
+      ],
+      "type": "SINGLE_CHOICE",
+      "tags": [
+        "professional",
+        "devops",
+        "briefmenow"
+      ],
+      "warnings": [],
+      "isOutdated": false,
+      "isProfessional": true
+    },
+    {
+      "id": "6da6f3f7-c104-4e84-8ac8-e3f87369cdb0",
+      "question": "You are creating an application which stores extremely sensitive financial information. All information in the system must be encrypted at rest and in transit. Which of these is a violation of this policy?",
+      "options": [
+        {
+          "id": "91075ff2-65b5-47fe-958d-3d646f693909",
+          "description": "ELB SSL termination.",
+          "explanation": "Terminating SSL terminates the security of a connection over HTTP, removing the S for “Secure” in HTTPS. the “encryption in transit” requirement in the scenario. http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-listener-config.html",
+          "isCorrectAnswer": true
+        },
+        {
+          "id": "c8b7613a-a790-4367-85d0-46f92320afb5",
+          "description": "ELB Using Proxy Protocol v1.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "8765ced9-e362-4ce9-a365-7dacfd6e0ad0",
+          "description": "CloudFront Viewer Protocol Policy set to HTTPS redirection.",
+          "explanation": "",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "10fd14e5-2b37-47cc-ac70-6d9f341b3d8d",
+          "description": "Telling S3 to use AES256 on the server-side.",
+          "explanation": "",
+          "isCorrectAnswer": false
+    		}
 			],
 			"answers": [
 				"91075ff2-65b5-47fe-958d-3d646f693909"

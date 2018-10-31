@@ -1,86 +1,116 @@
 <template>
-  <div class="question" v-if="question">
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group id="question"
+  <div>
+    <b-form>
+      <b-form-group id="lblQuestion"
                     label="Question:"
-                    label-for="txtQuestion">
+                    label-for="txtQuestion"
+                    description="Use UPPERCASE for negated questions (ie. NOT instead of not).">
           <b-form-textarea id="txtQuestion"
-                      v-model="text"
+                      v-model="question"
                       :rows="4"
                       :max-rows="10">
           </b-form-textarea>
       </b-form-group>
+      <b-form-checkbox id="chkIsProfessional" v-model="isProfessional">
+        This is PROFESSIONAL question
+      </b-form-checkbox>
+      <b-card bg-variant="light">
+        <b-form-group breakpoint="lg"
+                      label="Options"
+                      label-size="lg"
+                      label-class="font-weight-bold pt-0"
+                      class="mb-0">
+          <b-form-group label="Answer:"
+                        label-class="text-sm-right"
+                        label-for="txtOptionDescription">
+            <b-form-textarea id="txtOptionDescription"
+                      v-model="optionDescription"
+                      :rows="3"
+                      :max-rows="10">
+            </b-form-textarea>
+          </b-form-group>
+          <b-form-group label="Explanation:"
+                        label-class="text-sm-right"
+                        label-for="txtOptionExplanation">
+            <b-form-textarea id="txtOptionExplanation"
+                      v-model="optionExplanation"
+                      :rows="3"
+                      :max-rows="10">
+            </b-form-textarea>
+          </b-form-group>
+          <b-form-checkbox id="txtIsCorrectAnswer" v-model="optionIsCorrectAnswer">
+            This is one of the correct answers
+          </b-form-checkbox>
+          <b-form-group class="text-right">
+            <b-button variant="danger">
+              Clear
+            </b-button>
+            <b-button variant="primary" @click="addOption">
+              Add Option
+            </b-button>
+          </b-form-group>
+          <b-table :fields="fields" :items="options">
+            <template slot="index" slot-scope="data">
+              {{data.index + 1}}
+            </template>
+            <template slot="name" slot-scope="data">
+              {{data.value.first}} {{data.value.last}}
+            </template>
+            <template slot="nameage" slot-scope="data">
+              {{data.item.name.first}} is {{data.item.age}} years old
+            </template>
+          </b-table>
+        </b-form-group>
+      </b-card>
     </b-form>
-		<b-card class="mb-2">
-			<b-row>
-				<b-col align-h="center">
-					
-				</b-col>
-			</b-row>
-			<b-row>
-				<b-col>
-					<p class="card-text">
-						{{ question.question }}
-					</p>
-					<b-form>
-						<b-form-group v-for="(option, index) in question.options" :key="option.id" :disabled="question.answered">
-							<b-form-radio-group :id="question.id" v-model="selectedAnswer" :name="question.id" stacked :disabled="question.answered">
-								<b-form-radio :value="option.id" >
-									<span :style="question.answered && !option.isCorrectAnswer ? 'text-decoration: line-through;' : ''" >{{option.description}}</span>
-									<strong><span :class="option.isCorrectAnswer ? 'text-success' : 'text-danger'" v-if="question.answered && option.explanation">&nbsp;{{ option.explanation }}</span></strong>
-									</b-form-radio>
-							</b-form-radio-group>
-						</b-form-group>
-					</b-form>
-					<div>
-						<h6>
-							<b-badge v-for="(tag, index) in question.tags" :key="index" class="mr-1 ml-1">
-								{{ tag }}</b-badge>
-						</h6>
-					</div>
-				</b-col>
-			</b-row>
-			<b-row>
-				<b-col cols="4"></b-col>
-				<b-col cols="4" class="text-center">
-					<div v-if="question.answered">
-						<font-awesome-icon v-if="this.question.answeredCorrectly" class="text-success" icon="check-circle" size="3x"/>
-						<font-awesome-icon v-else class="text-danger" icon="times-circle" size="3x"/>
-					</div>
-					<div v-if="!question.answered">
-						<b-button variant="success" :disabled="selectedAnswer === null" @click="answer()">Answer</b-button>
-					</div>
-				</b-col>
-				<b-col cols="4"></b-col>
-			</b-row>
-		</b-card>
   </div>
 </template>
 
 <script>
-import { Api } from "@/services"
-import Vue from 'vue'
-import Question from "@/models/Question"
+import { Api } from "@/services";
+import { QuestionTypeConstants } from "@/services";
 
 export default {
   name: "Question",
   data: function() {
     return {
-			selectedAnswer: null
+      fields: [
+        {
+          key: "isCorrectAnswer",
+          label: "Answer"
+        },
+        {
+          key: "description",
+          label: "Description"
+        },
+        {
+          key: "explanation",
+          label: "Explanation"
+        },
+      ],
+      id: "",
+      question: "",
+      options: [],
+      answers: [],
+      tags: [],
+      warnings: [],
+      type: QuestionTypeConstants.SINGLE_SELECTION,
+      isProfessional: false,
+      optionDescription: "",
+      optionExplanation: "",
+      optionIsCorrectAnswer: false
     };
-	},
-	props: {
-		question: Question,
-	},
-	computed: {
-	},
+  },
+  props: {},
+  computed: {},
   methods: {
-		answer: function() {
-			Vue.set(this.question, 'answered', true)
-			Vue.set(this.question, 'selectedAnswers', [this.selectedAnswer])
-			Vue.set(this.question, 'answeredCorrectly', this.question.answers[0] === this.selectedAnswer)
-			this.$emit('answered', this.question)
-		}
+    addOption() {
+      this.options.push({
+        description: this.optionDescription,
+        explanation: this.optionExplanation,
+        isCorrectAnswer: this.optionIsCorrectAnswer
+      });
+    }
   }
 };
 </script>

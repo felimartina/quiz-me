@@ -18,20 +18,21 @@ library.add(faTrashAlt)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('font-awesome-layers', FontAwesomeLayers)
 Vue.component('font-awesome-layers-text', FontAwesomeLayersText)
+
 Vue.use(vueMoment)
 Vue.use(BootstrapVue)
 Vue.use(axios)
 Vue.use(VueMq, {
-	breakpoints: {
-		mobile: 450,
-		tablet: 900,
-		laptop: 1250,
-		desktop: Infinity
-	}
+  breakpoints: {
+    mobile: 450,
+    tablet: 900,
+    laptop: 1250,
+    desktop: Infinity
+  }
 })
 Vue.config.productionTip = false
 
 new Vue({
-	router,
-	render: h => h(App)
+  router,
+  render: h => h(App)
 }).$mount('#app')

@@ -10,26 +10,28 @@
     "api:mock": "json-server --watch db.json"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.2",
-    "@fortawesome/free-solid-svg-icons": "^5.2.0",
-    "@fortawesome/vue-fontawesome": "^0.1.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.7",
+    "@fortawesome/free-solid-svg-icons": "^5.4.2",
+    "@fortawesome/vue-fontawesome": "^0.1.2",
+    "aws-amplify": "^1.1.8",
+    "aws-amplify-vue": "^0.1.5",
     "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.11",
     "i": "^0.3.6",
-    "npm": "^6.2.0",
+    "npm": "^6.4.1",
     "uuid": "^3.3.2",
-    "vue": "^2.5.16",
+    "vue": "^2.5.17",
     "vue-moment": "^4.0.0",
     "vue-mq": "^0.2.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-rc.5",
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.5",
-    "@vue/cli-service": "^3.0.0-rc.5",
-    "@vue/eslint-config-standard": "^3.0.0-rc.5",
+    "@vue/cli-plugin-babel": "^3.1.0",
+    "@vue/cli-plugin-eslint": "^3.1.1",
+    "@vue/cli-service": "^3.1.1",
+    "@vue/eslint-config-standard": "^3.0.5",
     "json-server": "^0.14.0",
     "npm-run-all": "^4.1.3",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.5.17"
   }
 }
