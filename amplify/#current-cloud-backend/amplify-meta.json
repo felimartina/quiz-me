@@ -1,37 +1,56 @@
 {
 	"providers": {
 		"awscloudformation": {
-			"AuthRoleName": "quiz-20181030220729-authRole",
-			"UnauthRoleArn": "arn:aws:iam::586011406659:role/quiz-20181030220729-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::586011406659:role/quiz-20181030220729-authRole",
+			"AuthRoleName": "quizme-20181114093534-authRole",
+			"UnauthRoleArn": "arn:aws:iam::586011406659:role/quizme-20181114093534-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::586011406659:role/quizme-20181114093534-authRole",
 			"Region": "us-east-1",
-			"DeploymentBucketName": "quiz-20181030220729-deployment",
-			"UnauthRoleName": "quiz-20181030220729-unauthRole",
-			"StackName": "quiz-20181030220729",
-			"StackId": "arn:aws:cloudformation:us-east-1:586011406659:stack/quiz-20181030220729/040327d0-dce4-11e8-b005-500c28b12efe"
+			"DeploymentBucketName": "quizme-20181114093534-deployment",
+			"UnauthRoleName": "quizme-20181114093534-unauthRole",
+			"StackName": "quizme-20181114093534",
+			"StackId": "arn:aws:cloudformation:us-east-1:586011406659:stack/quizme-20181114093534/750e1f00-e844-11e8-93b2-50fae984a0d1"
 		}
 	},
 	"auth": {
-		"cognitoquizme": {
+		"cognito5c3c2f97": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/quiz-20181030220729-deployment/amplify-cfn-templates/auth/cognitoquizme-cloudformation-template.yml",
-				"logicalId": "authcognitoquizme"
+				"s3TemplateURL": "https://s3.amazonaws.com/quizme-20181114093534-deployment/amplify-cfn-templates/auth/cognito5c3c2f97-cloudformation-template.yml",
+				"logicalId": "authcognito5c3c2f97"
 			},
-			"lastPushTimeStamp": "2018-10-31T08:20:36.256Z",
+			"lastPushTimeStamp": "2018-11-14T19:41:58.968Z",
 			"output": {
-				"GoogleWebClient": "4947558876-0mpadsu88lkhti1hmltkun7b06b1domt.apps.googleusercontent.com",
-				"AppClientSecret": "mu65evghv67tof2dj3vce546b9i97gdg32rq9tm6lfa56tt4mp1",
-				"UserPoolId": "us-east-1_hHFUVzyfQ",
-				"AppClientIDWeb": "3v7nknjr0bkilj31rto0m2qkgr",
-				"AppClientID": "5jn2bs5at942gq37agcsgtc8gq",
-				"FacebookWebClient": "258813464985125",
-				"IdentityPoolId": "us-east-1:6ff51e18-3914-4e57-96a7-5e5efbdf58c2",
-				"IdentityPoolName": "cognitoquizmeidp",
-				"UserPoolName": "cognito-quizme-usergroup"
+				"AppClientSecret": "172djlha0uck7hmsuoiume4caanl3rnqsosvi3abhumom68miipb",
+				"UserPoolId": "us-east-1_3aKnpoazl",
+				"AppClientIDWeb": "7qsep0u5r1i5t1al96gu4oemni",
+				"AppClientID": "1ei34sbpfgpnlejkvb5j624f0d",
+				"IdentityPoolId": "us-east-1:94899eb0-53c5-4a4c-9d4f-0bd079d979e3",
+				"IdentityPoolName": "cognito5c3c2f97_identitypool_5c3c2f97",
+				"UserPoolName": "cognito5c3c2f97_userpool_5c3c2f97"
 			},
-			"lastPushDirHash": "SsTRcRTAI41wBbbHy6/lWREpEKY="
+			"lastPushDirHash": "dIXQBJz6GXP4iqxoTEgV/onOSu4="
+		}
+	},
+	"api": {
+		"quizme": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "AMAZON_COGNITO_USER_POOLS",
+				"GraphQLAPIIdOutput": "fvas4yvsnvafhfxzxn2aewm74e",
+				"GraphQLAPIEndpointOutput": "https://7bmk5xuzibdnhdpsgohectrayy.appsync-api.us-east-1.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-yihawwyzyjge7jsifyesdllmci",
+				"AuthCognitoUserPoolIdOutput": "us-east-1_3aKnpoazl",
+				"AuthCognitoUserPoolNativeClientId": "See UserPool: us-east-1_3aKnpoazl",
+				"AuthCognitoUserPoolJSClientId": "See UserPool: us-east-1_3aKnpoazl"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/quizme-20181114093534-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apiquizme"
+			},
+			"lastPushTimeStamp": "2018-11-14T19:41:58.968Z",
+			"lastPushDirHash": "4ytTQ71rEwjculp1GshuDD3KKyY="
 		}
 	}
 }

@@ -22,10 +22,10 @@
       <b-col>
         <b-progress :max="session.questions.length" striped animated>
           <b-progress-bar variant="success" :value="progress.answeredCorrectly">
-            <strong>{{ (progress.answeredCorrectly / session.questions.length) * 100 }}%</strong>
+            <strong>{{ Math.floor((progress.answeredCorrectly / session.questions.length) * 100) }}%</strong>
           </b-progress-bar>
           <b-progress-bar variant="danger" :value="progress.notAnsweredCorrectly">
-            <strong>{{ (progress.notAnsweredCorrectly / session.questions.length) * 100 }}%</strong>
+            <strong>{{ Math.floor((progress.notAnsweredCorrectly / session.questions.length) * 100) }}%</strong>
           </b-progress-bar>
           <b-progress-bar variant="secondary" :value="progress.unanswered"></b-progress-bar>
         </b-progress>
@@ -33,8 +33,8 @@
     </b-row>
     <b-row class="mt-2">
       <b-col>
-        <SingleSelectionQuestion v-if="isSingleChoice" :question="currentQuestion" @answered="onAnswered"></SingleSelectionQuestion>
-        <MultipleSelectionQuestion v-else :question="currentQuestion" @answered="onAnswered"></MultipleSelectionQuestion>
+        <SingleSelectionQuestion v-if="isSingleChoice" :question="currentQuestion" @answered="onAnswered" @nextQuestion="next()" @previousQuestion="back()"></SingleSelectionQuestion>
+        <MultipleSelectionQuestion v-else :question="currentQuestion" @answered="onAnswered" @nextQuestion="next()" @previousQuestion="back()"></MultipleSelectionQuestion>
       </b-col>
     </b-row>
   </div>

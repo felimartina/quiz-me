@@ -1,0 +1,16 @@
+projects:
+  quizme:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        graphQLApiId: fvas4yvsnvafhfxzxn2aewm74e
+      endpoints:
+        prod: >-
+          https://7bmk5xuzibdnhdpsgohectrayy.appsync-api.us-east-1.amazonaws.com/graphql

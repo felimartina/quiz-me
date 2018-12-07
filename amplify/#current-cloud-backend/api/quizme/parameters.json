@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "quizme",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognito5c3c2f97",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "schemaGraphql": "s3://quizme-20181114093534-deployment/amplify-appsync-files/schema.graphql.1542224228899",
+    "ResolverBucket": "quizme-20181114093534-deployment",
+    "ResolverRootKey": "amplify-appsync-files",
+    "DeploymentTimestamp": "1542224228899"
+}

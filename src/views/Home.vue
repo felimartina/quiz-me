@@ -1,26 +1,18 @@
 <template>
   <div class="home mt-3">
     <b-navbar toggleable="md" type="dark" variant="primary">
-
-  <b-navbar-brand href="#">Quiz Me</b-navbar-brand>
-  <div>
-<amplify-sign-out class="text-right"></amplify-sign-out>
-  </div>
-    
-
-</b-navbar>
-    <b-row>
-      <b-col>
-         <amplify-sign-out></amplify-sign-out>
-      </b-col>
-    </b-row>
+      <b-navbar-brand href="#">Quiz Me</b-navbar-brand>
+      <div>
+        <amplify-sign-out class="text-right"></amplify-sign-out>
+      </div>
+    </b-navbar>
     <b-row>
       <b-col xl="3" >
         <mq-layout mq="laptop+">
           <quiz-session-history @quizSessionSelected="onQuizSessionSelected"/>
         </mq-layout>
       </b-col>
-      <b-col xl="6">
+      <b-col xl="9">
         <quiz-session :session="currentSession"/>
       </b-col>
     </b-row>

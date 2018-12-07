@@ -1,0 +1,263 @@
+type Quiz {
+  id: ID!
+  name: String!
+  date: String!
+  questions: [Question]!
+}
+
+type Question {
+  id: ID!
+  question: String!
+  type: QuestionType!
+  tags: [Tag]!
+  isOutdated: Boolean
+  isProfessional: Boolean
+  exam: String!
+  options(filter: ModelQuestionOptionFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelQuestionOptionConnection
+}
+
+type QuestionOption {
+  id: ID!
+  question: Question
+  description: String!
+  explanation: String
+  isCorrectAnswer: Boolean
+}
+
+type Tag {
+  name: String!
+}
+
+enum QuestionType {
+  SINGLE_SELECTION
+  MULTIPLE_SELECTION
+  TRUE_FALSE
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelQuizConnection {
+  items: [Quiz]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelQuizFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  date: ModelStringFilterInput
+  and: [ModelQuizFilterInput]
+  or: [ModelQuizFilterInput]
+  not: ModelQuizFilterInput
+}
+
+type Query {
+  getQuiz(id: ID!): Quiz
+  listQuizs(filter: ModelQuizFilterInput, limit: Int, nextToken: String): ModelQuizConnection
+  getQuestion(id: ID!): Question
+  listQuestions(filter: ModelQuestionFilterInput, limit: Int, nextToken: String): ModelQuestionConnection
+  getQuestionOption(id: ID!): QuestionOption
+  listQuestionOptions(filter: ModelQuestionOptionFilterInput, limit: Int, nextToken: String): ModelQuestionOptionConnection
+  getTag(id: ID!): Tag
+  listTags(filter: ModelTagFilterInput, limit: Int, nextToken: String): ModelTagConnection
+}
+
+input CreateQuizInput {
+  id: ID
+  name: String!
+  date: String!
+}
+
+input UpdateQuizInput {
+  id: ID!
+  name: String
+  date: String
+}
+
+input DeleteQuizInput {
+  id: ID
+}
+
+type Mutation {
+  createQuiz(input: CreateQuizInput!): Quiz
+  updateQuiz(input: UpdateQuizInput!): Quiz
+  deleteQuiz(input: DeleteQuizInput!): Quiz
+  createQuestion(input: CreateQuestionInput!): Question
+  updateQuestion(input: UpdateQuestionInput!): Question
+  deleteQuestion(input: DeleteQuestionInput!): Question
+  createQuestionOption(input: CreateQuestionOptionInput!): QuestionOption
+  updateQuestionOption(input: UpdateQuestionOptionInput!): QuestionOption
+  deleteQuestionOption(input: DeleteQuestionOptionInput!): QuestionOption
+  createTag(input: CreateTagInput!): Tag
+  updateTag(input: UpdateTagInput!): Tag
+  deleteTag(input: DeleteTagInput!): Tag
+}
+
+type Subscription {
+  onCreateQuiz: Quiz @aws_subscribe(mutations: ["createQuiz"])
+  onUpdateQuiz: Quiz @aws_subscribe(mutations: ["updateQuiz"])
+  onDeleteQuiz: Quiz @aws_subscribe(mutations: ["deleteQuiz"])
+  onCreateQuestion: Question @aws_subscribe(mutations: ["createQuestion"])
+  onUpdateQuestion: Question @aws_subscribe(mutations: ["updateQuestion"])
+  onDeleteQuestion: Question @aws_subscribe(mutations: ["deleteQuestion"])
+  onCreateQuestionOption: QuestionOption @aws_subscribe(mutations: ["createQuestionOption"])
+  onUpdateQuestionOption: QuestionOption @aws_subscribe(mutations: ["updateQuestionOption"])
+  onDeleteQuestionOption: QuestionOption @aws_subscribe(mutations: ["deleteQuestionOption"])
+  onCreateTag: Tag @aws_subscribe(mutations: ["createTag"])
+  onUpdateTag: Tag @aws_subscribe(mutations: ["updateTag"])
+  onDeleteTag: Tag @aws_subscribe(mutations: ["deleteTag"])
+}
+
+type ModelQuestionConnection {
+  items: [Question]
+  nextToken: String
+}
+
+input ModelQuestionFilterInput {
+  id: ModelIDFilterInput
+  question: ModelStringFilterInput
+  isOutdated: ModelBooleanFilterInput
+  isProfessional: ModelBooleanFilterInput
+  exam: ModelStringFilterInput
+  and: [ModelQuestionFilterInput]
+  or: [ModelQuestionFilterInput]
+  not: ModelQuestionFilterInput
+}
+
+input CreateQuestionInput {
+  id: ID
+  question: String!
+  type: QuestionType!
+  isOutdated: Boolean
+  isProfessional: Boolean
+  exam: String!
+}
+
+input UpdateQuestionInput {
+  id: ID!
+  question: String
+  type: QuestionType
+  isOutdated: Boolean
+  isProfessional: Boolean
+  exam: String
+}
+
+input DeleteQuestionInput {
+  id: ID
+}
+
+type ModelQuestionOptionConnection {
+  items: [QuestionOption]
+  nextToken: String
+}
+
+input ModelQuestionOptionFilterInput {
+  id: ModelIDFilterInput
+  description: ModelStringFilterInput
+  explanation: ModelStringFilterInput
+  isCorrectAnswer: ModelBooleanFilterInput
+  and: [ModelQuestionOptionFilterInput]
+  or: [ModelQuestionOptionFilterInput]
+  not: ModelQuestionOptionFilterInput
+}
+
+input CreateQuestionOptionInput {
+  id: ID
+  description: String!
+  explanation: String
+  isCorrectAnswer: Boolean
+  questionOptionQuestionId: ID
+}
+
+input UpdateQuestionOptionInput {
+  id: ID!
+  description: String
+  explanation: String
+  isCorrectAnswer: Boolean
+  questionOptionQuestionId: ID
+}
+
+input DeleteQuestionOptionInput {
+  id: ID
+}
+
+type ModelTagConnection {
+  items: [Tag]
+  nextToken: String
+}
+
+input ModelTagFilterInput {
+  name: ModelStringFilterInput
+  and: [ModelTagFilterInput]
+  or: [ModelTagFilterInput]
+  not: ModelTagFilterInput
+}
+
+input CreateTagInput {
+  name: String!
+}
+
+input UpdateTagInput {
+  name: String
+}
+
+input DeleteTagInput {
+  id: ID
+}

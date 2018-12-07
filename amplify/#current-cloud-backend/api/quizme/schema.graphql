@@ -1,0 +1,31 @@
+type Quiz @model {
+  id: ID!
+  name: String!
+  date: String!
+  questions: [Question]!
+}
+type Question @model {
+  id: ID!
+  question: String!
+  type: QuestionType!
+  tags: [Tag]!
+  isOutdated: Boolean
+  isProfessional: Boolean
+  exam: String!
+  options: [QuestionOption]! @connection(name: "QuestionOptions")
+}
+type QuestionOption @model {
+  id: ID!
+  question: Question @connection(name: "QuestionOptions")
+  description: String!
+  explanation: String
+  isCorrectAnswer: Boolean
+}
+type Tag @model {
+  name: String!
+}
+enum QuestionType {
+  SINGLE_SELECTION
+  MULTIPLE_SELECTION
+  TRUE_FALSE
+}

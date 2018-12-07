@@ -8,12 +8,12 @@
       </b-row>
       <b-row>
         <b-col>
-          <p class="card-text">
+          <p class="card-text text-left">
             {{ question.question }}
           </p>
           <b-form>
             <b-form-group v-for="(option, index) in question.options" :key="option.id" :disabled="question.answered">
-              <b-form-radio-group :id="question.id" v-model="selectedAnswer" :name="question.id" stacked :disabled="question.answered">
+              <b-form-radio-group :id="question.id" v-model="selectedAnswer" :name="question.id" stacked :disabled="question.answered" class="text-left">
                 <b-form-radio :value="option.id" >
                   <span :style="question.answered && !option.isCorrectAnswer ? 'text-decoration: line-through;' : ''" >{{option.description}}</span>
                   <strong><span :class="option.isCorrectAnswer ? 'text-success' : 'text-danger'" v-if="question.answered && option.explanation">&nbsp;{{ option.explanation }}</span></strong>
@@ -30,7 +30,9 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col cols="4"></b-col>
+        <b-col cols="4" class="text-right">
+          <b-button variant="primary" @click="$emit('previousQuestion')">< Previous</b-button>
+        </b-col>
         <b-col cols="4" class="text-center">
           <div v-if="question.answered">
             <font-awesome-icon v-if="this.question.answeredCorrectly" class="text-success" icon="check-circle" size="3x"/>
@@ -40,7 +42,11 @@
             <b-button variant="success" :disabled="selectedAnswer === null" @click="answer()">Answer</b-button>
           </div>
         </b-col>
-        <b-col cols="4"></b-col>
+        <b-col cols="4" class="text-left">
+          <div v-if="question.answered">
+            <b-button variant="primary" @click="$emit('nextQuestion')">Next ></b-button>
+          </div>
+        </b-col>
       </b-row>
     </b-card>
   </div>
